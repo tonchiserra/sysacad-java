@@ -26,4 +26,4 @@ Repositorio de GitHub: https://github.com/tonchiserra/sysacad-java
 | Publicar el sitio | Obligatorio |                                  |
 
 ### Modelo de Datos (Diagrama Entidad-Relación):
-![Diagrama Entidad-Relación](./der.png "Diagrama Entidad-Relación")
+![Diagrama Entidad-Relación](./der.jpg "Diagrama Entidad-Relación")
