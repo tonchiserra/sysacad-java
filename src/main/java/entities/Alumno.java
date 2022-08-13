@@ -1,6 +1,6 @@
 package entities;
 
-public class Alumnos {
+public class Alumno extends Usuario {
 	int idCarrera;
 
 	public int getIdCarrera() {
