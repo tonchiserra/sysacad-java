@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Iterator;
+
 public class Comision {
 	String codigoComision;
 	int cupoTotal;
