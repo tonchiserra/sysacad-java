@@ -1,13 +1,14 @@
 <%@ page 
 	language="java" 
-	contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
+	contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"
 %>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1">
+		<meta charset="UTF-8">
 		<title>Sysacad-java</title>
+		<link rel="stylesheet" type="text/css" href="./style.css">
 	</head>
 	
 	<body>
@@ -19,7 +20,7 @@
 					<p>Sistema de autogestión alumnos</p>
 				</div>
 			</div>
-			<button type="button">
+			<button type="button" class="button_menu-mobile">
 				<!-- svg menu open -->
 				<!-- svg menu close -->
 			</button>
@@ -45,7 +46,7 @@
 		</header>
 		
 		<main class="main-container">
-			<p class="text-title">¡Hola!👋</p>
+			<p class="text-title">¡Hola!</p>
 			<h3 class="text-title__username"><!-- Tomar nombre de la db --></h3>
 			<p class="text-title"><!-- Tomar carrera de la db --></p>
 			

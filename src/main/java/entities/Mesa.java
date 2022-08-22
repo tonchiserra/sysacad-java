@@ -3,9 +3,9 @@ package entities;
 import java.time.LocalDateTime;
 
 public class Mesa {
-	int llamado;
-	LocalDateTime fechaHora;
-	int idMateria;
+	private int llamado;
+	private LocalDateTime fechaHora;
+	private int idMateria;
 	
 	public int getLlamado() {
 		return llamado;

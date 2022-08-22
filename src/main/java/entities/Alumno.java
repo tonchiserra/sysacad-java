@@ -1,7 +1,7 @@
 package entities;
 
 public class Alumno extends Usuario {
-	int idCarrera;
+	private int idCarrera;
 
 	public int getIdCarrera() {
 		return idCarrera;

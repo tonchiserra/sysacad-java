@@ -1,12 +1,12 @@
 package entities;
 
 public class Usuario {
-	String legajo;
-	String contrasena;
-	String nombre;
-	String apellido;
-	String documento;
-	String email;
+	private String legajo;
+	private String contrasena;
+	private String nombre;
+	private String apellido;
+	private String documento;
+	private String email;
 	
 	public String getLegajo() {
 		return legajo;

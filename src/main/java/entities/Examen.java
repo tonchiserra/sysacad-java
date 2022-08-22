@@ -3,11 +3,11 @@ package entities;
 import java.time.LocalDate;
 
 public class Examen {
-	String legajo;
-	int idMateria;
-	LocalDate fecha;
-	String estado;
-	double nota;
+	private String legajo;
+	private int idMateria;
+	private LocalDate fecha;
+	private String estado;
+	private double nota;
 	
 	public String getLegajo() {
 		return legajo;

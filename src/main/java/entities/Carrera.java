@@ -1,9 +1,9 @@
 package entities;
 
 public class Carrera {
-	int idCarrera;
-	String nombre;
-	String descripcion;
+	private int idCarrera;
+	private String nombre;
+	private String descripcion;
 	
 	public int getIdCarrera() {
 		return idCarrera;
