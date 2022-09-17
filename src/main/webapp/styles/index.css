@@ -1,0 +1,165 @@
+:root {
+  --first-color: #1C639C;
+  --second-color: #fff;
+  --white-color: #fff;
+  --gray-color: #c4c4c4;
+  --black-color: #000;
+  --link-color: #222;
+  --title-color: #222;
+  --text-color: #222;
+  --second-text-color: #888888;
+  --font: "Raleway", sans-serif;
+  --max-width: 1280px;
+  --header-height: 4rem;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: var(--font);
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--text-color);
+  background-color: var(--second-color);
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  line-height: 1.4;
+  color: var(--text-color);
+}
+
+button {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.main-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: var(--header-height);
+	background-color: var(--second-color);
+}
+
+.main-header-container {
+	width: 100vw;
+	max-width: calc(var(--max-width) - 2rem);
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: transparent;
+	margin: 0 auto;
+}
+
+.header__title-container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	height: 100%;
+}
+
+.header__title-container > img {
+	
+}
+
+.header__title-text {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	height: 100%;
+}
+
+.header__title-text > h2 {
+	margin: 0;
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 1;
+}
+
+.header__title-text > p {
+	margin: 0;
+	font-size: 12px;
+	font-weight: regular;
+	line-height: 1;
+}
+
+.button__menu-mobile {
+	border: none;
+	background-color: transparent;
+	outline: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.button__menu-mobile > .icon-hamburger {
+	
+}
+
+.button__menu-mobile > .icon-close {
+	display: none;
+}
+
+.button__menu-mobile.active > .icon-hamburguer {
+	display: none;
+}
+
+.button__menu-mobile.active > .icon-close {
+	display: unset;
+}
+
+.mian-menu {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100vw;
+	height: 100vh;
+	transform: translateX(100%);
+}
+
+.main-menu nav ul li {
+	
+}
+
+.main-menu nav ul li a {
+	
+}
+
+.main-container {
+	
+}
+
+.text-title {
+	
+}
+
+.text-title__username {
+	
+}

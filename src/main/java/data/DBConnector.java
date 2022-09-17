@@ -26,6 +26,14 @@ public class DBConnector {
 	}
 	
 	
+	public static DBConnector getInstancia() {
+		if (connector == null) {
+			connector = new DBConnector();
+		}
+		return connector;
+	}
+	
+	
 	public static DBConnector getConnector() {
 		if(connector == null) {
 			connector = new DBConnector();
@@ -49,7 +57,7 @@ public class DBConnector {
 		return connection;
 	}
 	
-	public void realeseConnection() {
+	public void releaseConnection() {
 		connected--;
 		try {
 			if(connected <= 0) {

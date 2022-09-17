@@ -7,24 +7,34 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Sysacad-java</title>
-		<link rel="stylesheet" type="text/css" href="./style.css">
+		<link rel="stylesheet" type="text/css" href="../styles/index.css">
+		<script src="./js/index.js" defer></script>
+		
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
 	</head>
 	
 	<body>
 		<header class="main-header">
-			<div class="header__title-container">
-				<!-- img logotipo utn -->
-				<div class="header__title-text">
-					<h2>UTN FRRo</h2>
-					<p>Sistema de autogestión alumnos</p>
+			<div class="main-header-container">
+				<div class="header__title-container">
+					<img src="../assets/utn-logo.svg" alt="UTN-logo" />
+					<div class="header__title-text">
+						<h2>UTN FRRo</h2>
+						<p>Sistema de autogestión alumnos</p>
+					</div>
 				</div>
+				<button type="button" class="button__menu-mobile">
+					<img class="icon-hamburger" src="../assets/icon-hamburger.svg" />
+					<img class="icon-close" src="../assets/icon-close.svg" />
+				</button>
 			</div>
-			<button type="button" class="button_menu-mobile">
-				<!-- svg menu open -->
-				<!-- svg menu close -->
-			</button>
-			<div class="header__main-menu">
+			
+			<aside class="main-menu">
 				<nav>
 					<ul>
 						<li><a href="">Página principal</a></li>
@@ -42,7 +52,7 @@
 						<li><a href="">Salir</a></li>
 					</ul>
 				</nav>
-			</div>
+			</aside>
 		</header>
 		
 		<main class="main-container">
