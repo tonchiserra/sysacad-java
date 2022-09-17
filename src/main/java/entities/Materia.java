@@ -1,11 +1,11 @@
 package entities;
 
 public class Materia {
-	int idMateria;
-	String nombre;
-	String descripcion;
-	int anio;
-	int idCarrera;
+	private int idMateria;
+	private String nombre;
+	private String descripcion;
+	private int anio;
+	private int idCarrera;
 	
 	public int getIdMateria() {
 		return idMateria;

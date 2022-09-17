@@ -1,8 +1,8 @@
 package entities;
 
 public class Comision {
-	String codigoComision;
-	int cupoTotal;
+	private String codigoComision;
+	private int cupoTotal;
 	
 	public String getCodigoComision() {
 		return codigoComision;

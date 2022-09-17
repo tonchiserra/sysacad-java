@@ -1,18 +1,18 @@
 package entities;
 
 public class Usuario {
-	String legajo;
-	String contrasena;
-	String nombre;
-	String apellido;
-	String documento;
-	String email;
+	private int legajo;
+	private String contrasena;
+	private String nombre;
+	private String apellido;
+	private String dni;
+	private String email;
 	
-	public String getLegajo() {
+	public int getLegajo() {
 		return legajo;
 	}
 
-	public void setLegajo(String legajo) {
+	public void setLegajo(int legajo) {
 		this.legajo = legajo;
 	}
 	
@@ -40,12 +40,12 @@ public class Usuario {
 		this.apellido = apellido;
 	}
 	
-	public String getDocumento() {
-		return documento;
+	public String getDNI() {
+		return dni;
 	}
 	
-	public void setDocumento(String documento) {
-		this.documento = documento;
+	public void setDNI(String dni) {
+		this.dni = dni;
 	}
 	
 	public String getEmail() {
