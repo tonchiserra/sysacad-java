@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import entities.Usuario;
 import logic.Login;
@@ -22,6 +23,9 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");  
+	    PrintWriter out = response.getWriter();  
+		
 		Usuario userLoged = new Usuario();
 		Login ctrlLogin = new Login();
 		
@@ -33,10 +37,12 @@ public class LoginServlet extends HttpServlet {
 		
 		userLoged = ctrlLogin.validate(userLoged);
 		
-		request.getSession().setAttribute("usuario", userLoged);
-		
-		//validar bien
-		response.sendRedirect("pages/index.jsp");
+		if(userLoged != null) {
+			request.getSession().setAttribute("usuario", userLoged);
+			response.sendRedirect("pages/index.jsp");
+		}else {
+			System.out.println("incorrecto rey");
+		}
 	}
 
 }

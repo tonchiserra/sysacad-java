@@ -135,13 +135,17 @@ button {
 	display: unset;
 }
 
-.mian-menu {
-	position: absolute;
+.main-menu {
+	position: fixed;
 	top: 0;
 	right: 0;
 	width: 100vw;
 	height: 100vh;
-	transform: translateX(100%);
+	transform: translateX(100vw);
+}
+
+.button__menu-mobile.active ~ .main-menu {
+	transform: translateX(0%);	
 }
 
 .main-menu nav ul li {
