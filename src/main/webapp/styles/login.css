@@ -132,3 +132,17 @@ button {
 	font-size: 16px;
 	margin-bottom: 30px;
 }
+
+.no-account__container {
+	padding-top: 50px;
+	width: 350px;
+	border-top: 1px solid var(--second-text-color);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.no-account__container > p {
+	font-size: 16px;
+	color: var(--second-ext-color);
+}

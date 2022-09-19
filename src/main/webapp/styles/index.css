@@ -30,7 +30,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   color: var(--text-color);
-  background-color: var(--second-color);
+  background-color: #f4f4f4;
 }
 
 a {
@@ -120,44 +120,101 @@ button {
 }
 
 .button__menu-mobile > .icon-hamburger {
-	
+	display: block;
 }
 
 .button__menu-mobile > .icon-close {
 	display: none;
 }
 
-.button__menu-mobile.active > .icon-hamburguer {
+.button__menu-mobile.active > .icon-hamburger {
 	display: none;
 }
 
 .button__menu-mobile.active > .icon-close {
-	display: unset;
+	display: block;
 }
 
 .main-menu {
 	position: fixed;
-	top: 0;
+	top: var(--header-height);
 	right: 0;
 	width: 100vw;
 	height: 100vh;
-	transform: translateX(100vw);
+	transform: translateX(100%);
+	background-color: var(--second-color);
+	transition: all 300ms ease-in-out;
+	z-index: 2;
 }
 
-.button__menu-mobile.active ~ .main-menu {
-	transform: translateX(0%);	
+.main-menu.active {
+	transform: translateX(0);	
+}
+
+.main-menu__background {
+	display: none;
+	transition: all 300ms ease-in-out;
+}
+
+.main-menu.active + .main-menu__background {
+	display: unset;
+	position: fixed;
+	top: var(--header-height);
+	left: 0;
+	width: 100vw;
+	height: calc(100vh - var(--header-height));
+	background-color: #000000AA;
+	z-index: 1;
+}
+
+@media screen and (min-width: 600px) {
+	.main-menu {
+		width: 50vw;
+	}
+}
+
+.main-menu nav {
+	width: 100%;
+}
+
+.main-menu nav ul {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	padding: 0;
+	margin: 0;
 }
 
 .main-menu nav ul li {
-	
+	list-style: none;
+	width: 100%;
+	height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .main-menu nav ul li a {
-	
+	width: 100%;
+	height: 100%;
+	color: var(--first-color);
+	background-color: var(--second-color);
+	font-size: 16px;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.main-menu nav ul li a:hover {
+	color: var(--second-color);
+	background-color: var(--first-color);
 }
 
 .main-container {
-	
+	margin-top: var(--header-height);
 }
 
 .text-title {

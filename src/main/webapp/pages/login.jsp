@@ -30,6 +30,11 @@
 				<input type="password" name="password" placeholder="Ingresar contraseña" required />
 				<button type="submit">Ingresar</button>
 			</form>
+			
+			<div class="no-account__container">
+				<p>¿No tienes una cuenta?</p>
+				<p>Puedes pedirla en alumnado</p>
+			</div>
 		</main>
 	</body>
 </html>

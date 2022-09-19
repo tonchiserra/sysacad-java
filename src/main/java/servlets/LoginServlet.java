@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -19,12 +21,11 @@ public class LoginServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");  
-	    PrintWriter out = response.getWriter();  
+		HttpSession session = request.getSession();
 		
 		Usuario userLoged = new Usuario();
 		Login ctrlLogin = new Login();
@@ -37,11 +38,12 @@ public class LoginServlet extends HttpServlet {
 		
 		userLoged = ctrlLogin.validate(userLoged);
 		
-		if(userLoged != null) {
-			request.getSession().setAttribute("usuario", userLoged);
+		if(userLoged != null && session.getAttribute("usuario") == null) {
+			session.setAttribute("usuario", userLoged);
 			response.sendRedirect("pages/index.jsp");
 		}else {
 			System.out.println("incorrecto rey");
+			response.sendRedirect("pages/login.jsp");
 		}
 	}
 

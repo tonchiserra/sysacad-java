@@ -1,3 +1,6 @@
-document.querySelector(".button__menu-mobile").addEventListener("click", e => {
-	e.target.classList.toggle('active')
-})
+function handleMenu() {
+	console.log('hola')
+	
+	document.querySelector('.button__menu-mobile').classList.toggle('active')
+	document.querySelector('.main-menu').classList.toggle('active')
+}
