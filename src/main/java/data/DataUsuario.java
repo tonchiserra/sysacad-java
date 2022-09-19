@@ -14,7 +14,7 @@ public class DataUsuario {
 		
 		try {
 			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
-					"select legajo,nombre,apellido,dni,email,sueldo,idCarrera from persona where legajo=? and contraseña=?"
+					"select legajo,nombre,apellido,dni,email,sueldo,idCarrera from usuario where legajo=? and contraseña=?"
 					);
 			stmt.setInt(1, user.getLegajo());
 			stmt.setString(2, user.getContrasena());

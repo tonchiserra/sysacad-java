@@ -1,0 +1,148 @@
+:root {
+  --first-color: #1C639C;
+  --second-color: #fff;
+  --white-color: #fff;
+  --gray-color: #c4c4c4;
+  --black-color: #000;
+  --link-color: #222;
+  --title-color: #222;
+  --text-color: #222;
+  --second-text-color: #888888;
+  --font: "Raleway", sans-serif;
+  --max-width: 1280px;
+  --header-height: 4rem;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: var(--font);
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--text-color);
+  background-color: #f4f4f4;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  line-height: 1.4;
+  color: var(--text-color);
+}
+
+button {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.login__main-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	width: 100vw;
+	height: 100vh;
+}
+
+.login__title-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.login__title-container > img {
+	height: 46px;
+	width: auto;
+}
+
+.login-title {
+	text-align: left;
+}
+
+.login-title h1 {
+	font-weight: bold;
+	font-size: 20px;
+	margin: 0;
+}
+
+.login-title h2 {
+	font-weight: bold;
+	font-size: 20px;
+	margin: 0;
+}
+
+.login__description {
+	font-size: 16px;
+	text-align: center;
+	margin-top: 0;
+}
+
+.form-login {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+
+.form-login input {
+	width: 350px;
+	height: 48px;
+	border: none;
+	outline: none;
+	background: #fff;
+	border-radius: 10px;
+	font-size: 16px;
+	padding: 0 20px
+}
+
+.form-login button {
+	width: 350px;
+	height: 48px;
+	border: none;
+	outline: none;
+	background: #1C639C;
+	color: #fff;
+	font-weight: bold;
+	border-radius: 10px;
+	font-size: 16px;
+	margin-bottom: 30px;
+}
+
+.no-account__container {
+	padding-top: 50px;
+	width: 350px;
+	border-top: 1px solid var(--second-text-color);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.no-account__container > p {
+	font-size: 16px;
+	color: var(--second-ext-color);
+}

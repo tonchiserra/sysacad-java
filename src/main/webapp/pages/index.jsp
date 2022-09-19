@@ -1,3 +1,5 @@
+<%@ page import="entities.Usuario" %>
+
 <%@ page 
 	language="java" 
 	contentType="text/html; charset=UTF-8"
@@ -10,12 +12,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Sysacad-java</title>
 		<link rel="stylesheet" type="text/css" href="../styles/index.css">
-		<script src="./js/index.js" defer></script>
+		<script src="../js/index.js" defer></script>
 		
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+	
+		<!-- Java -->
+		<%
+			Usuario user = (Usuario) session.getAttribute("usuario");
+		%>
 	</head>
 	
 	<body>
@@ -28,7 +35,7 @@
 						<p>Sistema de autogestión alumnos</p>
 					</div>
 				</div>
-				<button type="button" class="button__menu-mobile">
+				<button type="button" class="button__menu-mobile" onclick="handleMenu()" >
 					<img class="icon-hamburger" src="../assets/icon-hamburger.svg" />
 					<img class="icon-close" src="../assets/icon-close.svg" />
 				</button>
@@ -53,11 +60,12 @@
 					</ul>
 				</nav>
 			</aside>
+			<div class="main-menu__background"></div>
 		</header>
 		
 		<main class="main-container">
 			<p class="text-title">¡Hola!</p>
-			<h3 class="text-title__username"><!-- Tomar nombre de la db --></h3>
+			<h3 class="text-title__username"><%= user.getNombre() %> <%= user.getApellido() %></h3>
 			<p class="text-title"><!-- Tomar carrera de la db --></p>
 			
 			<div class="academic-status__container">
@@ -89,7 +97,7 @@
 						</div>
 					<!-- fin for -->
 				</div>
-			</div>	
+			</div>
 		</main>
 		
 		<footer class="main-footer">
