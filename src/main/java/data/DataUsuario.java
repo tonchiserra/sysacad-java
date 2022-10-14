@@ -36,7 +36,7 @@ public class DataUsuario {
 				newUser.setDNI(rs.getString("dni"));
 				newUser.setEmail(rs.getString("email"));
 				
-				//Falta sueldo en cado de profesor y idCarrera en caso de alumno
+				//Falta sueldo en caso de profesor y idCarrera en caso de alumno
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

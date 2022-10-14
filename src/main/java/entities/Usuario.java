@@ -8,6 +8,8 @@ public class Usuario {
 	private String dni;
 	private String email;
 	
+	private int idCarrera;
+	
 	public int getLegajo() {
 		return legajo;
 	}
