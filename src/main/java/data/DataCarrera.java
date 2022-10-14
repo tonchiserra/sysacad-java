@@ -109,11 +109,55 @@ public class DataCarrera {
 	}
 	
 	public Carrera update(Carrera unaCarrera) {
-		return unaCarrera; //temporal
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
+					"delete from carrera where idCarrera=?"
+					);
+			stmt.setInt(1, unaCarrera.getIdCarrera());
+			stmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return unaCarrera;
 	}
 	
 	public Carrera delete(Carrera unaCarrera) {
-		return unaCarrera; //temporal
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
+					"update carrera set nombre = ?, descripcion = ? where idCarrera = ?"
+					);
+			stmt.setString(1, unaCarrera.getNombre());
+			stmt.setString(2, unaCarrera.getDescripcion());
+			stmt.setInt(3, unaCarrera.getIdCarrera());
+			stmt.executeUpdate();
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) { rs.close(); }
+				if(stmt != null) { stmt.close(); }
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return unaCarrera;
 	}
 	
 	
