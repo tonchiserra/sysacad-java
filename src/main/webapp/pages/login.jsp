@@ -12,6 +12,13 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+	
+		<!-- Java -->
+		<%
+			if(session.getAttribute("usuario") != null){
+				response.sendRedirect("./index.jsp");
+			}
+		%>	
 	</head>
 	<body>
 		<main class="login__main-container">

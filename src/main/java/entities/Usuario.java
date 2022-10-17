@@ -8,6 +8,7 @@ public class Usuario {
 	private String dni;
 	private String email;
 	
+	private double sueldo;	
 	private int idCarrera;
 	
 	public int getLegajo() {
@@ -56,5 +57,5 @@ public class Usuario {
 	
 	public void setEmail(String email) {
 		this.email = email;
-	}	
+	}
 }
