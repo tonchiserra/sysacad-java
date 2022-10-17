@@ -21,7 +21,13 @@
 	
 		<!-- Java -->
 		<%
-			Usuario user = (Usuario) session.getAttribute("usuario");
+			Usuario user = null;
+		
+			if(session.getAttribute("usuario") == null){
+				response.sendRedirect("./login.jsp");
+			}else{
+				user = (Usuario) session.getAttribute("usuario");	
+			}
 		%>
 	</head>
 	

@@ -42,7 +42,6 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("usuario", userLoged);
 			response.sendRedirect("pages/index.jsp");
 		}else {
-			System.out.println("incorrecto rey");
 			response.sendRedirect("pages/login.jsp");
 		}
 	}
