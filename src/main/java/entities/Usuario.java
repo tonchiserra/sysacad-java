@@ -8,9 +8,6 @@ public class Usuario {
 	private String dni;
 	private String email;
 	
-	private double sueldo;	
-	private int idCarrera;
-	
 	public int getLegajo() {
 		return legajo;
 	}

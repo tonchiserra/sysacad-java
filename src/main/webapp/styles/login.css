@@ -107,6 +107,7 @@ button {
 	align-items: center;
 	justify-content: center;
 	gap: 20px;
+	position: relative;
 }
 
 .form-login input {
@@ -131,6 +132,26 @@ button {
 	border-radius: 10px;
 	font-size: 16px;
 	margin-bottom: 30px;
+}
+
+.form-login button:hover {
+	opacity: .7;
+}
+
+.legajo__error-message {
+	color: #ff0000;
+	font-size: 12px;
+	position: absolute;
+	top: 50px;
+	left: 0;
+}
+
+.password__error-message {
+	color: #ff0000;
+	font-size: 12px;
+	position: absolute;
+	top: 120px;
+	left: 0;
 }
 
 .no-account__container {
