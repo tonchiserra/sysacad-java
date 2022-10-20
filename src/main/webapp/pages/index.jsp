@@ -23,10 +23,10 @@
 		<%
 			Usuario user = null;
 		
-			if(session.getAttribute("usuario") == null){
-				response.sendRedirect("./login.jsp");
-			}else{
+			if(session.getAttribute("usuario") != null){
 				user = (Usuario) session.getAttribute("usuario");	
+			}else{
+				response.sendRedirect("./login.jsp");
 			}
 		%>
 	</head>
@@ -51,8 +51,6 @@
 				<nav>
 					<ul>
 						<li><a href="">Página principal</a></li>
-						<li><a href="">Calendario académico 2022</a></li>
-						<li><a href="">Trámite alumnos</a></li>
 						<li><a href="">Materias del plan</a></li>
 						<li><a href="">Estado académico</a></li>
 						<li><a href="">Exámenes</a></li>
@@ -60,9 +58,8 @@
 						<li><a href="">Correlatividades</a></li>
 						<li><a href="">Inscripción a exámen</a></li>
 						<li><a href="">Inscripción a cursado</a></li>
-						<li><a href="">Avisos</a></li>
 						<li><a href="">Cambio de contraseña</a></li>
-						<li><a href="">Salir</a></li>
+						<li><a href="../LogoutServlet">Salir</a></li>
 					</ul>
 				</nav>
 			</aside>
