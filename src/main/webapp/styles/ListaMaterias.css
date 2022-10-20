@@ -1,0 +1,51 @@
+:root {
+  --first-color: #1C639C;
+  --second-color: #fff;
+  --white-color: #fff;
+  --gray-color: #c4c4c4;
+  --black-color: #000;
+  --link-color: #222;
+  --title-color: #222;
+  --text-color: #222;
+  --second-text-color: #888888;
+  --font: "Raleway", sans-serif;
+  --max-width: 1280px;
+  --header-height: 4rem;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: var(--font);
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--text-color);
+  background-color: #f4f4f4;
+}
+
+table{
+	border-collapse: separate;
+	border-spacing: 0 15px;
+}
+
+th{
+	background-color: var(--grey-color);
+	color: white;
+}
+
+th, td{
+	width: 150px;
+ 	text-align: center;
+  	border: 1px solid black;
+  	padding: 5px;
+}
