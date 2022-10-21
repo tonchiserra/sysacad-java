@@ -8,8 +8,6 @@ public class Usuario {
 	private String dni;
 	private String email;
 	
-	private int idCarrera;
-	
 	public int getLegajo() {
 		return legajo;
 	}
@@ -57,8 +55,11 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+<<<<<<< HEAD
 
 	public int getIdCarrera() {
 		return idCarrera;
 	}	
+=======
+>>>>>>> master
 }

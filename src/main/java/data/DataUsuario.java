@@ -22,13 +22,13 @@ public class DataUsuario {
 			
 			if(rs!=null && rs.next()) {
 				
-				/*if(rs.getDouble("sueldo") > 0) {
+				if(rs.getDouble("sueldo") > 0) {
 					newUser = new Profesor();
+					((Profesor) newUser).setSueldo(rs.getDouble("sueldo"));
 				}else {
 					newUser = new Alumno();
-				}*/
-				
-				newUser = new Usuario();
+					((Alumno) newUser).setIdCarrera(rs.getInt("idCarrera"));
+				}
 				
 				newUser.setLegajo(rs.getInt("legajo"));
 				newUser.setNombre(rs.getString("nombre"));
@@ -36,7 +36,6 @@ public class DataUsuario {
 				newUser.setDNI(rs.getString("dni"));
 				newUser.setEmail(rs.getString("email"));
 				
-				//Falta sueldo en caso de profesor y idCarrera en caso de alumno
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
