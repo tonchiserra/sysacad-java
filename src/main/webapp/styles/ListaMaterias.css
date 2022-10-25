@@ -1,0 +1,50 @@
+.content-table{
+	border-collapse: collapse;
+ 	margin: 25px 0;
+	font-size: 0.9em;
+	min-width: 400px;
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	
+}
+
+.content-table thead tr{
+	background-color: var(--white-color);
+	color:var(--text-color);
+	text-align: left;
+	font-weight: bold;
+}
+
+.content-table th,
+.content-table td{
+	padding: 12px 15px;
+}
+
+.content-table tbody tr:last-of-type {
+	border-bottom: 2px solid var(--white-color);
+}
+
+.header-materia h1{
+	color: var(--text-color);
+	font-weight: bold;
+	font-size: 25px;
+	margin-bottom: -25px;
+}
+
+.header-materia p{
+	font-size: 20px;
+	color: var(--var-second-text-color);
+}
+.saludo p{
+	font-size: 20px;
+	color: var(--var-second-text-color);
+	margin-bottom: -5px;
+}
+
+.usuario-aprobado{
+	background-color: var(--green-color);
+}
+.usuario-regular{
+	background-color: var(--ywllow-color);
+}

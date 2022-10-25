@@ -32,6 +32,7 @@ public class DataCarrera {
 			try {
 				if(rs!=null) {rs.close();}
 				if(stmt!=null) {stmt.close();}
+				DBConnector.getInstancia().releaseConnection();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -100,6 +101,7 @@ public class DataCarrera {
 			try {
 				if(rs != null) { rs.close(); }
 				if(stmt != null) { stmt.close(); }
+				DBConnector.getInstancia().releaseConnection();
 			} catch(SQLException e) {
 				e.printStackTrace();
 			}
@@ -125,6 +127,7 @@ public class DataCarrera {
 			try {
 				if(rs!=null) {rs.close();}
 				if(stmt!=null) {stmt.close();}
+				DBConnector.getInstancia().releaseConnection();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -152,6 +155,7 @@ public class DataCarrera {
 			try {
 				if(rs != null) { rs.close(); }
 				if(stmt != null) { stmt.close(); }
+				DBConnector.getInstancia().releaseConnection();
 			} catch(SQLException e) {
 				e.printStackTrace();
 			}

@@ -11,13 +11,12 @@ public class DataUsuario {
 		Usuario newUser = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
 		try {
 			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
-					"select legajo,nombre,apellido,dni,email,sueldo,idCarrera from usuario where legajo=? and contraseña=?"
+					"select legajo,nombre,apellido,dni,email,sueldo,idCarrera from usuario where legajo=? and contrasenia=?"
 					);
 			stmt.setInt(1, user.getLegajo());
-			stmt.setString(2, user.getContrasena());
+			stmt.setString(2, user.getContrasenia());
 			rs = stmt.executeQuery();
 			
 			if(rs!=null && rs.next()) {

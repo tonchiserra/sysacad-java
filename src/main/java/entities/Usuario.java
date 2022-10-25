@@ -2,7 +2,7 @@ package entities;
 
 public class Usuario {
 	private int legajo;
-	private String contrasena;
+	private String contrasenia;
 	private String nombre;
 	private String apellido;
 	private String dni;
@@ -16,12 +16,12 @@ public class Usuario {
 		this.legajo = legajo;
 	}
 	
-	public String getContrasena() {
-		return contrasena;
+	public String getContrasenia() {
+		return contrasenia;
 	}
 	
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
 	}
 	
 	public String getNombre() {
@@ -56,3 +56,4 @@ public class Usuario {
 		this.email = email;
 	}
 }
+
