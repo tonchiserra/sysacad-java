@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `tpsysacad` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `tpsysacad`;
--- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
 -- Host: localhost    Database: tpsysacad
 -- ------------------------------------------------------
--- Server version	8.0.25
+-- Server version	8.0.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -108,8 +108,10 @@ CREATE TABLE `materia` (
   `idMateria` int unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
-  `año` varchar(45) NOT NULL,
+  `anio` int NOT NULL,
   `idCarrera` int unsigned NOT NULL,
+  `plan` int DEFAULT NULL,
+  `materiacol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idMateria`),
   KEY `idCarrera_idx` (`idCarrera`),
   CONSTRAINT `FK_materia_carrera` FOREIGN KEY (`idCarrera`) REFERENCES `carrera` (`idCarrera`) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -122,7 +124,7 @@ CREATE TABLE `materia` (
 
 LOCK TABLES `materia` WRITE;
 /*!40000 ALTER TABLE `materia` DISABLE KEYS */;
-INSERT INTO `materia` VALUES (1,'Análisis Matemático 1','funciones, derivadas, integrales','2008',1),(2,'Algebra y Geometría Analítica',NULL,'2008',1),(3,'Matemátoca Discreta',NULL,'2008',1),(4,'Sistemas y Organizaciones',NULL,'2008',1),(5,'Algoritmos y Estructuras de Datos',NULL,'2008',1),(6,'Arquitectura de Computadoras',NULL,'2008',1),(7,'Física 1',NULL,'2008',1),(8,'Inglés Técnico 1',NULL,'2008',1),(9,'Química General',NULL,'2008',1),(10,'Análisis Matemático 2',NULL,'2008',1),(11,'Física 2',NULL,'2008',1),(12,'Análisis de Sistemas',NULL,'2008',1),(13,'Sintaxis y Semántica de Lenguajes',NULL,'2008',1),(14,'Paradigmas de Programación',NULL,'2008',1),(15,'Sistemas Operativos',NULL,'2008',1),(16,'Sistemas de Representación',NULL,'2008',1),(17,'Probabilidad y Estadística',NULL,'2008',1),(18,'Diseño de Sistemas',NULL,'2008',1),(19,'Comunicaciones',NULL,'2008',1),(20,'Matemática Superior',NULL,'2008',1),(21,'Gestión de Datos',NULL,'2008',1),(22,'Ingeniería y Sociedad',NULL,'2008',1),(23,'Economía',NULL,'2008',1),(24,'Inglés Técnico 2',NULL,'2008',1),(25,'Redes de Información',NULL,'2008',1),(26,'Administración de Recursos',NULL,'2008',1),(27,'Investigación Operativa',NULL,'2008',1),(28,'Simulación',NULL,'2008',1),(29,'Ingeniería del Software',NULL,'2008',1),(30,'Teoría de Control',NULL,'2008',1),(31,'Legislación',NULL,'2008',1),(32,'Proyecto Final',NULL,'2008',1),(33,'Inteligencia Artificial',NULL,'2008',1),(34,'Administración Gerencial',NULL,'2008',1),(35,'Sistemas de Gestión',NULL,'2008',1),(36,'Int. a la Práctica Profesional',NULL,'2008',1),(37,'Algoritmos Genéticos',NULL,'2008',1),(38,'Lenguaje COBOL',NULL,'2008',1),(39,'Lenguaje Programación JAVA',NULL,'2008',1),(40,'Gestión Ingenieril',NULL,'2008',1),(41,'Tecnología de Desarrollo de Software IDE (.NET)',NULL,'2008',1),(42,'Infraestructura Tecnológica',NULL,'2008',1),(43,'Formación de Emprendedores',NULL,'2008',1),(44,'Entornos Gráficos',NULL,'2008',1),(45,'Soporte a la Gestión de Datos con Programación Visual',NULL,'2008',1),(46,'Dirección de Recursos Humanos',NULL,'2008',1),(47,'Informática en la Administración Pública',NULL,'2008',1),(48,'Metodología de la Investigación',NULL,'2008',1),(49,'Sistemas de Inf. Integrados para la Industria',NULL,'2008',1),(50,'Minería de Datos',NULL,'2008',1);
+INSERT INTO `materia` VALUES (1,'Análisis Matemático 1','funciones, derivadas, integrales',1,1,NULL,NULL),(2,'Algebra y Geometría Analítica',NULL,1,1,NULL,NULL),(3,'Matemátoca Discreta',NULL,1,1,NULL,NULL),(4,'Sistemas y Organizaciones',NULL,1,1,NULL,NULL),(5,'Algoritmos y Estructuras de Datos',NULL,1,1,NULL,NULL),(6,'Arquitectura de Computadoras',NULL,1,1,NULL,NULL),(7,'Física 1',NULL,1,1,NULL,NULL),(8,'Inglés Técnico 1',NULL,2,1,NULL,NULL),(9,'Química General',NULL,2,1,NULL,NULL),(10,'Análisis Matemático 2',NULL,2,1,NULL,NULL),(11,'Física 2',NULL,2,1,NULL,NULL),(12,'Análisis de Sistemas',NULL,2,1,NULL,NULL),(13,'Sintaxis y Semántica de Lenguajes',NULL,2,1,NULL,NULL),(14,'Paradigmas de Programación',NULL,2,1,NULL,NULL),(15,'Sistemas Operativos',NULL,2,1,NULL,NULL),(16,'Sistemas de Representación',NULL,2,1,NULL,NULL),(17,'Probabilidad y Estadística',NULL,3,1,NULL,NULL),(18,'Diseño de Sistemas',NULL,3,1,NULL,NULL),(19,'Comunicaciones',NULL,3,1,NULL,NULL),(20,'Matemática Superior',NULL,3,1,NULL,NULL),(21,'Gestión de Datos',NULL,3,1,NULL,NULL),(22,'Ingeniería y Sociedad',NULL,3,1,NULL,NULL),(23,'Economía',NULL,3,1,NULL,NULL),(24,'Inglés Técnico 2',NULL,3,1,NULL,NULL),(25,'Redes de Información',NULL,4,1,NULL,NULL),(26,'Administración de Recursos',NULL,4,1,NULL,NULL),(27,'Investigación Operativa',NULL,4,1,NULL,NULL),(28,'Simulación',NULL,4,1,NULL,NULL),(29,'Ingeniería del Software',NULL,4,1,NULL,NULL),(30,'Teoría de Control',NULL,4,1,NULL,NULL),(31,'Legislación',NULL,4,1,NULL,NULL),(32,'Proyecto Final',NULL,5,1,NULL,NULL),(33,'Inteligencia Artificial',NULL,5,1,NULL,NULL),(34,'Administración Gerencial',NULL,5,1,NULL,NULL),(35,'Sistemas de Gestión',NULL,5,1,NULL,NULL),(36,'Int. a la Práctica Profesional',NULL,0,1,NULL,NULL),(37,'Algoritmos Genéticos',NULL,0,1,NULL,NULL),(38,'Lenguaje COBOL',NULL,0,1,NULL,NULL),(39,'Lenguaje Programación JAVA',NULL,0,1,NULL,NULL),(40,'Gestión Ingenieril',NULL,0,1,NULL,NULL),(41,'Tecnología de Desarrollo de Software IDE (.NET)',NULL,0,1,NULL,NULL),(42,'Infraestructura Tecnológica',NULL,0,1,NULL,NULL),(43,'Formación de Emprendedores',NULL,0,1,NULL,NULL),(44,'Entornos Gráficos',NULL,0,1,NULL,NULL),(45,'Soporte a la Gestión de Datos con Programación Visual',NULL,0,1,NULL,NULL),(46,'Dirección de Recursos Humanos',NULL,0,1,NULL,NULL),(47,'Informática en la Administración Pública',NULL,0,1,NULL,NULL),(48,'Metodología de la Investigación',NULL,0,1,NULL,NULL),(49,'Sistemas de Inf. Integrados para la Industria',NULL,0,1,NULL,NULL),(50,'Minería de Datos',NULL,0,1,NULL,NULL);
 /*!40000 ALTER TABLE `materia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +194,7 @@ DROP TABLE IF EXISTS `usuario`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuario` (
   `legajo` int unsigned NOT NULL,
-  `contraseña` varchar(45) NOT NULL,
+  `contrasenia` varchar(45) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
   `dni` varchar(45) NOT NULL,
@@ -225,4 +227,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-13 19:11:28
+-- Dump completed on 2022-10-25  9:19:00

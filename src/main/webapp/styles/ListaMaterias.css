@@ -1,51 +1,50 @@
-:root {
-  --first-color: #1C639C;
-  --second-color: #fff;
-  --white-color: #fff;
-  --gray-color: #c4c4c4;
-  --black-color: #000;
-  --link-color: #222;
-  --title-color: #222;
-  --text-color: #222;
-  --second-text-color: #888888;
-  --font: "Raleway", sans-serif;
-  --max-width: 1280px;
-  --header-height: 4rem;
+.content-table{
+	border-collapse: collapse;
+ 	margin: 25px 0;
+	font-size: 0.9em;
+	min-width: 400px;
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	
 }
 
-html {
-  box-sizing: border-box;
-  font-family: var(--font);
-  font-size: 16px;
-  scroll-behavior: smooth;
+.content-table thead tr{
+	background-color: var(--white-color);
+	color:var(--text-color);
+	text-align: left;
+	font-weight: bold;
 }
 
-*,
-*::after,
-*::before {
-  box-sizing: inherit;
+.content-table th,
+.content-table td{
+	padding: 12px 15px;
 }
 
-body {
-  margin: 0;
-  overflow-x: hidden;
-  color: var(--text-color);
-  background-color: #f4f4f4;
+.content-table tbody tr:last-of-type {
+	border-bottom: 2px solid var(--white-color);
 }
 
-table{
-	border-collapse: separate;
-	border-spacing: 0 15px;
+.header-materia h1{
+	color: var(--text-color);
+	font-weight: bold;
+	font-size: 25px;
+	margin-bottom: -25px;
 }
 
-th{
-	background-color: var(--grey-color);
-	color: white;
+.header-materia p{
+	font-size: 20px;
+	color: var(--var-second-text-color);
+}
+.saludo p{
+	font-size: 20px;
+	color: var(--var-second-text-color);
+	margin-bottom: -5px;
 }
 
-th, td{
-	width: 150px;
- 	text-align: center;
-  	border: 1px solid black;
-  	padding: 5px;
+.usuario-aprobado{
+	background-color: var(--green-color);
+}
+.usuario-regular{
+	background-color: var(--ywllow-color);
 }
