@@ -21,7 +21,6 @@
 		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
 	
 		<!-- Java -->
-
 		<%
 			Usuario user = null;
 		
@@ -55,7 +54,7 @@
 					<ul>
 						<li><a href="">Página principal</a></li>
 						<li><a href="">Materias del plan</a></li>
-						<li><a href="">Estado académico</a></li>
+						<li><a href="./ListaMaterias.jsp">Estado académico</a></li>
 						<li><a href="">Exámenes</a></li>
 						<li><a href="">Cursado</a></li>
 						<li><a href="">Correlatividades</a></li>

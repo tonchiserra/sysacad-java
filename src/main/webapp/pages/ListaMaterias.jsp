@@ -1,6 +1,6 @@
-<%@ page import="java.util.LinkedList"%>
-<%@ page import="data.DataMateria"%>
-<%@ page import="entities.Materia"%>
+<%@ page import="java.util.LinkedList" %>
+<%@ page import="data.DataMateria" %>
+<%@ page import="entities.*" %>
 <%@ page 
 	language="java" 
 	contentType="text/html; charset=UTF-8"
@@ -8,7 +8,7 @@
 %>
 <!DOCTYPE html>
 <html>
-<head>
+	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Sysacad-java | Materias</title>
@@ -19,18 +19,20 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
-<title>Materias</title>
-<%-- 		<% --%>
-// 			Usuario user = null;
 		
-// 			if(session.getAttribute("usuario") != null){
-// 				user = (Usuario) session.getAttribute("usuario");	
-// 			}else{
-// 				response.sendRedirect("./login.jsp");
-// 			}
-<%-- 		%> --%>
-</head>
-<body>
+		<!-- Java -->
+		<%
+ 			Usuario user = null;
+		
+ 			if(session.getAttribute("usuario") != null){
+ 				user = (Usuario) session.getAttribute("usuario");	
+ 			}else{
+ 				response.sendRedirect("./login.jsp");
+ 			}
+		%>
+	</head>
+	
+	<body>
 <%-- 	<h1><%= user.getNombre() %> <%= user.getApellido() %></h1> --%>
 	<div class="saludo">
 		<p> ¡Hola! 👋 </p>
@@ -50,15 +52,15 @@
 	    <tbody>
 	    	 <% DataMateria lm=new DataMateria();
 			 	LinkedList<Materia> listaMaterias= new LinkedList<>();
-			 	listaMaterias = lm.getAll();%>
+			 	listaMaterias = lm.getAll();
+			 %>
  			 <%for (Materia mat : listaMaterias){ %>
-	        <tr>
-				<td><%=mat.getAnio()%></td>
- 				<td><%=mat.getNombre()%></td>
-	 			<td <%=if(user.getEstadoMateria())%>"></td> //usar estado de examen para colores css
-	        </tr>
- 	        <% }%>
-
+	        	<tr>
+					<td><%=mat.getAnio()%></td>
+ 					<td><%=mat.getNombre()%></td>
+	 				<td></td> <!-- usar estado de examen para colores css -->
+	        	</tr>
+ 	         <% }%>
 	    </tbody>
 	</table>
 
