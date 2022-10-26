@@ -67,7 +67,7 @@
 		</header>
 		
 		<main class="main-container">
-			<p class="text-title">¡Hola!</p>
+			<p class="text-title">¡Hola! 👋</p>
 			<h3 class="text-title__username"><%= user.getNombre() %> <%= user.getApellido() %></h3>
 			<p class="text-title"><!-- Tomar carrera de la db --></p>
 			
