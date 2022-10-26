@@ -52,7 +52,7 @@ public class DataMateria {
 		
 		try {
 			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
-					"select idMateria, nombre, descripcion, anio, idCarrera from materia"
+					"select idMateria, nombre, descripcion, anio, idCarrera, plan from materia"
 					);
 			rs = stmt.executeQuery();
 			
@@ -64,6 +64,7 @@ public class DataMateria {
 				unaMateria.setDescripcion(rs.getString("descripcion"));
 				unaMateria.setAnio(rs.getInt("anio"));
 				unaMateria.setIdCarrera(rs.getInt("idCarrera"));
+				unaMateria.setPlan(rs.getInt("plan"));
 				
 				materias.add(unaMateria);
 			}
@@ -82,7 +83,7 @@ public class DataMateria {
 		return materias;
 	}
 	
-	public Materia update(Materia unaMateria) {
+	public Materia delete(Materia unaMateria) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
@@ -108,19 +109,20 @@ public class DataMateria {
 		return unaMateria;
 	}
 	
-	public Materia delete(Materia unaMateria) {
+	public Materia update(Materia unaMateria) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
 		try {
 			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
-					"update materia set nombre = ?, descripcion = ?, anio = ?, idCarrera = ? where idMateria = ?"
+					"update materia set nombre = ?, descripcion = ?, anio = ?, idCarrera = ?, plan = ? where idMateria = ?"
 					);
 			stmt.setString(1, unaMateria.getNombre());
 			stmt.setString(2, unaMateria.getDescripcion());
 			stmt.setInt(3, unaMateria.getAnio());
 			stmt.setInt(4, unaMateria.getIdCarrera());
 			stmt.setInt(5, unaMateria.getIdMateria());
+			stmt.setInt(6, unaMateria.getPlan());
 			stmt.executeUpdate();
 
 		} catch(SQLException e) {

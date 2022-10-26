@@ -14,6 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="../styles/sysacad.css">
 		<link rel="stylesheet" type="text/css" href="../styles/index.css">
 		<script src="../js/index.js" defer></script>
+		<script src="../js/userMenu.js" defer></script>
 		
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,22 +50,7 @@
 				</button>
 			</div>
 			
-			<aside class="main-menu">
-				<nav>
-					<ul>
-						<li><a href="">Página principal</a></li>
-						<li><a href="">Materias del plan</a></li>
-						<li><a href="./ListaMaterias.jsp">Estado académico</a></li>
-						<li><a href="">Exámenes</a></li>
-						<li><a href="">Cursado</a></li>
-						<li><a href="">Correlatividades</a></li>
-						<li><a href="">Inscripción a exámen</a></li>
-						<li><a href="">Inscripción a cursado</a></li>
-						<li><a href="">Cambio de contraseña</a></li>
-						<li><a href="../LogoutServlet">Salir</a></li>
-					</ul>
-				</nav>
-			</aside>
+			<user-menu></user-menu>
 			<div class="main-menu__background"></div>
 		</header>
 		

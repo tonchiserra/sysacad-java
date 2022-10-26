@@ -1,0 +1,58 @@
+.inscription-title {
+	margin: 80px 0 20px 0;
+	font-size: 24px;
+}
+
+.inscription__table {
+	width: 100%;
+	max-width: 800px;
+	backgorund-color: #fff;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
+.inscription__table-header {
+	border-radius: 10px 10px 0 0;
+	text-align: center;
+}
+
+.inscription__table-header,
+.inscription__table-row {
+	display: grid;
+	grid-template-columns: .5fr 2fr .5fr 1fr;
+	gap: 5px;
+	align-items: center;
+	height: 32px;
+	background-color: #fff;
+}
+
+.table-header__title {
+	color: var(--first-color);
+	font-weight: 700;
+	margin: 0;
+}
+
+.inscription__table-row:nth-child(even) {
+	background-color: #e6e6e6;	
+}
+
+.inscription__table-row p {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-size: 16px;
+}
+
+.inscription__table-row .table-row__name-text {
+	text-align: left;
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.table-row__inscription-text a {
+	font-weight: normal;
+	color: var(--first-color);
+	text-decoration: underline !important;
+}
