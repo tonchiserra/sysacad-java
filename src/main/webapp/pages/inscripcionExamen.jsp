@@ -1,5 +1,6 @@
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="data.DataMateria" %>
+<%@ page import="data.DataMesa" %>
 <%@ page import="entities.*" %>
 
 <%@ page 
@@ -64,16 +65,40 @@
 					<p class="table-header__title">Plan</p>
 					<p class="table-header__title">Inscripción</p>
 				</div>
+				
 				<%	DataMateria dm = new DataMateria();
 					LinkedList<Materia> materias = new LinkedList<>();
 					materias = dm.getAll();
+					
+					DataMesa dme = new DataMesa();
+					LinkedList<Mesa> mesas = new LinkedList<>();
+					mesas = dme.getAll();
 				%>
+				
 				<%for (Materia materia : materias){ %>
 					<div class="inscription__table-row">
-						<p class="table-row__age-text"><%=materia.getAnio()%></p>
-						<p class="table-row__name-text"><%=materia.getNombre()%></p>
-						<p class="table-row__plan-text"><%=materia.getPlan()%></p>
-						<p class="table-row__inscription-text"><a href="">Inscribir</a></p>
+						<div class="table-row__content-top">
+							<p class="table-row__age-text"><%=materia.getAnio()%></p>
+							<p class="table-row__name-text"><%=materia.getNombre()%></p>
+							<p class="table-row__plan-text"><%=materia.getPlan()%></p>
+							<label for="Materia-<%=materia.getIdMateria()%>" class="table-row__inscription-text">Ver mesas</label>
+						</div>
+						<input class="materia-checkbox" type="checkbox" name="Materia-<%=materia.getIdMateria()%>" id="Materia-<%=materia.getIdMateria()%>" />	
+						<div class="table__modal-info">
+							<form action="" class="mesas-form"> <!-- Agregar servlet para hacer la alta del alumno en el examen -->
+								<% int i = 0;
+								for (Mesa mesa : mesas){ 
+									i++;
+									if(mesa.getIdMateria() == materia.getIdMateria()){ %>
+										<div class="mesa-item">
+											<input type="radio" name="Mesa-<%=materia.getIdMateria()%>" id="Materia-<%=materia.getIdMateria()%>-Mesa-<%=mesa.getIdMateria()%>-<%=i%>" />	
+											<label for="Materia-<%=materia.getIdMateria()%>-Mesa-<%=mesa.getIdMateria()%>-<%=i%>">Llamado número <%=mesa.getLlamado()%></label>
+										</div>
+									<% }%>	
+								<% }%>
+								<button type="submit">Inscribirse</button>
+							</form>
+						</div>
 					</div>
 				<% }%>
 			</div>
