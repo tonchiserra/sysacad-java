@@ -3,17 +3,17 @@ package entities;
 import java.time.LocalDate;
 
 public class Examen {
-	private String legajo;
+	private int legajo;
 	private int idMateria;
 	private LocalDate fecha;
 	private String estado;
 	private double nota;
 	
-	public String getLegajo() {
+	public int getLegajo() {
 		return legajo;
 	}
 	
-	public void setLegajo(String legajo) {
+	public void setLegajo(int legajo) {
 		this.legajo = legajo;
 	}
 	

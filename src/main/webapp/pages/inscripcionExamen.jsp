@@ -21,8 +21,8 @@
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
-	
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+		
 		<!-- Java -->
 		<%
 			Usuario user = null;
@@ -85,17 +85,23 @@
 						</div>
 						<input class="materia-checkbox" type="checkbox" name="Materia-<%=materia.getIdMateria()%>" id="Materia-<%=materia.getIdMateria()%>" />	
 						<div class="table__modal-info">
-							<form action="" class="mesas-form"> <!-- Agregar servlet para hacer la alta del alumno en el examen -->
+							<form action="../InscripcionServlet" class="mesas-form">
 								<% int i = 0;
 								for (Mesa mesa : mesas){ 
 									i++;
 									if(mesa.getIdMateria() == materia.getIdMateria()){ %>
 										<div class="mesa-item">
-											<input type="radio" name="Mesa-<%=materia.getIdMateria()%>" id="Materia-<%=materia.getIdMateria()%>-Mesa-<%=mesa.getIdMateria()%>-<%=i%>" />	
-											<label for="Materia-<%=materia.getIdMateria()%>-Mesa-<%=mesa.getIdMateria()%>-<%=i%>">Llamado número <%=mesa.getLlamado()%></label>
+											<input type="radio" name="Mesa" id="Materia-<%=materia.getIdMateria()%>-Mesa-<%=mesa.getIdMateria()%>-<%=i%>" value="<%=mesa.getFechaHora()%>" />	
+											<label for="Materia-<%=materia.getIdMateria()%>-Mesa-<%=mesa.getIdMateria()%>-<%=i%>">
+												<p>Fecha <%=mesa.getFechaHora()%></p>
+												<p>-</p>
+												<p>Llamado número <%=mesa.getLlamado()%></p>
+											</label>
 										</div>
 									<% }%>	
 								<% }%>
+								<input type="hidden" name="Legajo" value="<%=user.getLegajo()%>">
+								<input type="hidden" name="Materia" value="<%=materia.getIdMateria()%>">
 								<button type="submit">Inscribirse</button>
 							</form>
 						</div>

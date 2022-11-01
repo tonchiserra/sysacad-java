@@ -3,6 +3,7 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 import entities.Mesa;
@@ -23,7 +24,7 @@ public class DataMesa {
 				Mesa unaMesa = new Mesa();
 				
 				unaMesa.setIdMateria(rs.getInt("idMateria"));
-				//unaMesa.setFechaHora(rs.getDate("fechaHora"));
+				unaMesa.setFechaHora(rs.getObject("fechaHora", LocalDateTime.class));
 				unaMesa.setLlamado(rs.getInt("llamado"));
 				
 				mesas.add(unaMesa);

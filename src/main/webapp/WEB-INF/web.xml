@@ -29,4 +29,14 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InscripcionServlet</display-name>
+    <servlet-name>InscripcionServlet</servlet-name>
+    <servlet-class>servlets.InscripcionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InscripcionServlet</servlet-name>
+    <url-pattern>/InscripcionServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
