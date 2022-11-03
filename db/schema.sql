@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `tpsysacad` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `tpsysacad` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `tpsysacad`;
--- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
 -- Host: localhost    Database: tpsysacad
 -- ------------------------------------------------------
--- Server version	8.0.29
+-- Server version	8.0.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -77,10 +77,10 @@ DROP TABLE IF EXISTS `examen`;
 CREATE TABLE `examen` (
   `legajo` int unsigned NOT NULL,
   `idMateria` int unsigned NOT NULL,
-  `fecha` date NOT NULL,
+  `fecha` datetime NOT NULL,
   `estado` varchar(45) NOT NULL,
-  `nota` int unsigned NOT NULL,
-  PRIMARY KEY (`legajo`,`idMateria`,`fecha`),
+  `nota` int unsigned DEFAULT NULL,
+  PRIMARY KEY (`legajo`,`idMateria`),
   KEY `FK_examen_materia_idx` (`idMateria`),
   CONSTRAINT `FK_examen_materia` FOREIGN KEY (`idMateria`) REFERENCES `materia` (`idMateria`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `FK_examen_usuario` FOREIGN KEY (`legajo`) REFERENCES `usuario` (`legajo`) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -93,7 +93,7 @@ CREATE TABLE `examen` (
 
 LOCK TABLES `examen` WRITE;
 /*!40000 ALTER TABLE `examen` DISABLE KEYS */;
-INSERT INTO `examen` VALUES (47064,1,'2022-06-30','Aprobado',10);
+INSERT INTO `examen` VALUES (47064,1,'2022-06-30 00:00:00','Aprobado',10),(47064,2,'2022-11-29 15:00:00','a rendir',0),(47064,3,'2022-12-11 12:30:00','a rendir',0),(47064,4,'2022-11-13 15:30:00','a rendir',0),(47064,5,'2022-11-20 00:00:00','Regular',NULL),(47064,6,'2022-11-20 00:00:00','Regular',NULL),(47064,7,'2022-11-20 00:00:00','Regular',NULL);
 /*!40000 ALTER TABLE `examen` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +111,6 @@ CREATE TABLE `materia` (
   `anio` int NOT NULL,
   `idCarrera` int unsigned NOT NULL,
   `plan` int DEFAULT NULL,
-  `materiacol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idMateria`),
   KEY `idCarrera_idx` (`idCarrera`),
   CONSTRAINT `FK_materia_carrera` FOREIGN KEY (`idCarrera`) REFERENCES `carrera` (`idCarrera`) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -124,7 +123,7 @@ CREATE TABLE `materia` (
 
 LOCK TABLES `materia` WRITE;
 /*!40000 ALTER TABLE `materia` DISABLE KEYS */;
-INSERT INTO `materia` VALUES (1,'Análisis Matemático 1','funciones, derivadas, integrales',1,1,NULL,NULL),(2,'Algebra y Geometría Analítica',NULL,1,1,NULL,NULL),(3,'Matemátoca Discreta',NULL,1,1,NULL,NULL),(4,'Sistemas y Organizaciones',NULL,1,1,NULL,NULL),(5,'Algoritmos y Estructuras de Datos',NULL,1,1,NULL,NULL),(6,'Arquitectura de Computadoras',NULL,1,1,NULL,NULL),(7,'Física 1',NULL,1,1,NULL,NULL),(8,'Inglés Técnico 1',NULL,2,1,NULL,NULL),(9,'Química General',NULL,2,1,NULL,NULL),(10,'Análisis Matemático 2',NULL,2,1,NULL,NULL),(11,'Física 2',NULL,2,1,NULL,NULL),(12,'Análisis de Sistemas',NULL,2,1,NULL,NULL),(13,'Sintaxis y Semántica de Lenguajes',NULL,2,1,NULL,NULL),(14,'Paradigmas de Programación',NULL,2,1,NULL,NULL),(15,'Sistemas Operativos',NULL,2,1,NULL,NULL),(16,'Sistemas de Representación',NULL,2,1,NULL,NULL),(17,'Probabilidad y Estadística',NULL,3,1,NULL,NULL),(18,'Diseño de Sistemas',NULL,3,1,NULL,NULL),(19,'Comunicaciones',NULL,3,1,NULL,NULL),(20,'Matemática Superior',NULL,3,1,NULL,NULL),(21,'Gestión de Datos',NULL,3,1,NULL,NULL),(22,'Ingeniería y Sociedad',NULL,3,1,NULL,NULL),(23,'Economía',NULL,3,1,NULL,NULL),(24,'Inglés Técnico 2',NULL,3,1,NULL,NULL),(25,'Redes de Información',NULL,4,1,NULL,NULL),(26,'Administración de Recursos',NULL,4,1,NULL,NULL),(27,'Investigación Operativa',NULL,4,1,NULL,NULL),(28,'Simulación',NULL,4,1,NULL,NULL),(29,'Ingeniería del Software',NULL,4,1,NULL,NULL),(30,'Teoría de Control',NULL,4,1,NULL,NULL),(31,'Legislación',NULL,4,1,NULL,NULL),(32,'Proyecto Final',NULL,5,1,NULL,NULL),(33,'Inteligencia Artificial',NULL,5,1,NULL,NULL),(34,'Administración Gerencial',NULL,5,1,NULL,NULL),(35,'Sistemas de Gestión',NULL,5,1,NULL,NULL),(36,'Int. a la Práctica Profesional',NULL,0,1,NULL,NULL),(37,'Algoritmos Genéticos',NULL,0,1,NULL,NULL),(38,'Lenguaje COBOL',NULL,0,1,NULL,NULL),(39,'Lenguaje Programación JAVA',NULL,0,1,NULL,NULL),(40,'Gestión Ingenieril',NULL,0,1,NULL,NULL),(41,'Tecnología de Desarrollo de Software IDE (.NET)',NULL,0,1,NULL,NULL),(42,'Infraestructura Tecnológica',NULL,0,1,NULL,NULL),(43,'Formación de Emprendedores',NULL,0,1,NULL,NULL),(44,'Entornos Gráficos',NULL,0,1,NULL,NULL),(45,'Soporte a la Gestión de Datos con Programación Visual',NULL,0,1,NULL,NULL),(46,'Dirección de Recursos Humanos',NULL,0,1,NULL,NULL),(47,'Informática en la Administración Pública',NULL,0,1,NULL,NULL),(48,'Metodología de la Investigación',NULL,0,1,NULL,NULL),(49,'Sistemas de Inf. Integrados para la Industria',NULL,0,1,NULL,NULL),(50,'Minería de Datos',NULL,0,1,NULL,NULL);
+INSERT INTO `materia` VALUES (1,'Análisis Matemático 1','funciones, derivadas, integrales',1,1,2008),(2,'Algebra y Geometría Analítica',NULL,1,1,2008),(3,'Matemátoca Discreta',NULL,1,1,2008),(4,'Sistemas y Organizaciones',NULL,1,1,2008),(5,'Algoritmos y Estructuras de Datos',NULL,1,1,2008),(6,'Arquitectura de Computadoras',NULL,1,1,2008),(7,'Física 1',NULL,1,1,2008),(8,'Inglés Técnico 1',NULL,2,1,2008),(9,'Química General',NULL,2,1,2008),(10,'Análisis Matemático 2',NULL,2,1,2008),(11,'Física 2',NULL,2,1,2008),(12,'Análisis de Sistemas',NULL,2,1,2008),(13,'Sintaxis y Semántica de Lenguajes',NULL,2,1,2008),(14,'Paradigmas de Programación',NULL,2,1,2008),(15,'Sistemas Operativos',NULL,2,1,2008),(16,'Sistemas de Representación',NULL,2,1,2008),(17,'Probabilidad y Estadística',NULL,3,1,2008),(18,'Diseño de Sistemas',NULL,3,1,2008),(19,'Comunicaciones',NULL,3,1,2008),(20,'Matemática Superior',NULL,3,1,2008),(21,'Gestión de Datos',NULL,3,1,2008),(22,'Ingeniería y Sociedad',NULL,3,1,2008),(23,'Economía',NULL,3,1,2008),(24,'Inglés Técnico 2',NULL,3,1,2008),(25,'Redes de Información',NULL,4,1,2008),(26,'Administración de Recursos',NULL,4,1,2008),(27,'Investigación Operativa',NULL,4,1,2008),(28,'Simulación',NULL,4,1,2008),(29,'Ingeniería del Software',NULL,4,1,2008),(30,'Teoría de Control',NULL,4,1,2008),(31,'Legislación',NULL,4,1,2008),(32,'Proyecto Final',NULL,5,1,2008),(33,'Inteligencia Artificial',NULL,5,1,2008),(34,'Administración Gerencial',NULL,5,1,2008),(35,'Sistemas de Gestión',NULL,5,1,2008),(36,'Int. a la Práctica Profesional',NULL,0,1,2008),(37,'Algoritmos Genéticos',NULL,0,1,2008),(38,'Lenguaje COBOL',NULL,0,1,2008),(39,'Lenguaje Programación JAVA',NULL,0,1,2008),(40,'Gestión Ingenieril',NULL,0,1,2008),(41,'Tecnología de Desarrollo de Software IDE (.NET)',NULL,0,1,2008),(42,'Infraestructura Tecnológica',NULL,0,1,2008),(43,'Formación de Emprendedores',NULL,0,1,2008),(44,'Entornos Gráficos',NULL,0,1,2008),(45,'Soporte a la Gestión de Datos con Programación Visual',NULL,0,1,2008),(46,'Dirección de Recursos Humanos',NULL,0,1,2008),(47,'Informática en la Administración Pública',NULL,0,1,2008),(48,'Metodología de la Investigación',NULL,0,1,2008),(49,'Sistemas de Inf. Integrados para la Industria',NULL,0,1,2008),(50,'Minería de Datos',NULL,0,1,2008);
 /*!40000 ALTER TABLE `materia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +149,7 @@ CREATE TABLE `mesa` (
 
 LOCK TABLES `mesa` WRITE;
 /*!40000 ALTER TABLE `mesa` DISABLE KEYS */;
-INSERT INTO `mesa` VALUES (1,'2022-10-15 14:00:00',5);
+INSERT INTO `mesa` VALUES (1,'2022-10-15 14:00:00',5),(1,'2022-12-10 10:30:00',5),(2,'2022-10-15 19:00:00',5),(2,'2022-11-29 15:00:00',6),(2,'2022-12-04 11:30:00',5),(2,'2022-12-23 18:30:00',5),(3,'2022-11-01 10:00:00',2),(3,'2022-12-11 12:30:00',5),(4,'2022-11-13 15:30:00',6),(4,'2022-12-15 15:30:00',6),(5,'2022-10-30 15:30:00',7),(5,'2022-12-15 16:30:00',5);
 /*!40000 ALTER TABLE `mesa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,4 +226,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-25  9:19:00
+-- Dump completed on 2022-11-03 13:34:41
