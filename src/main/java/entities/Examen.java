@@ -1,11 +1,11 @@
 package entities;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Examen {
 	private int legajo;
 	private int idMateria;
-	private LocalDate fecha;
+	private LocalDateTime fecha;
 	private String estado;
 	private double nota;
 	
@@ -25,11 +25,11 @@ public class Examen {
 		this.idMateria = idMateria;
 	}
 	
-	public LocalDate getFecha() {
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
 	
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
 	}
 	

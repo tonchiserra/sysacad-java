@@ -100,7 +100,9 @@
 										</div>
 									<% }%>	
 								<% }%>
-								<input type="hidden" name="Legajo" value="<%=user.getLegajo()%>">
+								<%if(user != null) {%>
+									<input type="hidden" name="Legajo" value="<%=user.getLegajo()%>">
+								<% }%>
 								<input type="hidden" name="Materia" value="<%=materia.getIdMateria()%>">
 								<button type="submit">Inscribirse</button>
 							</form>

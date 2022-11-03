@@ -14,6 +14,7 @@ import data.DataExamen;
 import data.DataUsuario;
 import entities.Examen;
 import entities.Usuario;
+import logic.Inscripcion;
 import logic.Login;
 
 public class InscripcionServlet extends HttpServlet {
@@ -24,28 +25,26 @@ public class InscripcionServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String fecha = request.getParameter("Mesa");
+		Inscripcion ctrlInscripcion = new Inscripcion();
 		int legajo = Integer.parseInt(request.getParameter("Legajo"));
 		int idMateria = Integer.parseInt(request.getParameter("Materia"));
 		
-		DataUsuario du = new DataUsuario();
-		Usuario userLoged = new Usuario();
-		userLoged.setLegajo(legajo);
-		userLoged = du.getOne(userLoged);
+		//DataUsuario du = new DataUsuario();
+		//Usuario userLoged = new Usuario();
+		//userLoged.setLegajo(legajo);
+		//userLoged = du.getOne(userLoged);
 		
-		DataExamen de = new DataExamen();
 		Examen alumnoMateria = new Examen();
 		alumnoMateria.setLegajo(legajo);
 		alumnoMateria.setIdMateria(idMateria);
-		alumnoMateria = de.getOne(alumnoMateria);
+		alumnoMateria = ctrlInscripcion.validate(alumnoMateria, fecha);
 		
-		if(alumnoMateria.getEstado().toLowerCase() == "cursando") {
-			System.out.println("cursando brotherrrrr");
-		}
+		response.sendRedirect("pages/inscripcionExamen.jsp");
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
 
 }

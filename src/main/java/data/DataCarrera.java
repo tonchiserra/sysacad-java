@@ -110,7 +110,7 @@ public class DataCarrera {
 		return carreras;
 	}
 	
-	public Carrera update(Carrera unaCarrera) {
+	public Carrera delete(Carrera unaCarrera) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
@@ -136,7 +136,7 @@ public class DataCarrera {
 		return unaCarrera;
 	}
 	
-	public Carrera delete(Carrera unaCarrera) {
+	public Carrera update(Carrera unaCarrera) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
