@@ -1,0 +1,136 @@
+.inscription-title {
+	margin: 80px 0 20px 0;
+	font-size: 24px;
+}
+
+.inscription__table {
+	width: 100%;
+	max-width: 800px;
+	backgorund-color: #fff;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
+.inscription__table-header {
+	border-radius: 10px 10px 0 0;
+	text-align: center;
+	background-color: #fff;
+}
+
+.inscription__table-header,
+.table-row__content-top {
+	display: grid;
+	grid-template-columns: .5fr 2fr .5fr 1fr;
+	gap: 5px;
+	align-items: center;
+	height: 32px;
+}
+
+.table-header__title {
+	color: var(--first-color);
+	font-weight: 700;
+	margin: 0;
+}
+
+.inscription__table-row:nth-child(even) {
+	background-color: #e6e6e6;	
+}
+
+.inscription__table-row {
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+}
+
+.inscription__table-row p {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-size: 16px;
+}
+
+.inscription__table-row .table-row__name-text {
+	text-align: left;
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.table-row__inscription-text {
+	font-weight: normal;
+	color: var(--first-color);
+	text-decoration: underline !important;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	text-align: center;
+}
+
+.materia-checkbox {
+	display: none;
+}
+
+.materia-checkbox:checked ~ .table__modal-info {
+	height: 200px;
+	border-top: 1px solid #888;
+	padding-top: 20px;
+}
+
+.table__modal-info {
+	width: calc(100% - 40px);
+	height: 0;
+	transition: all 300ms ease;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.mesas-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.mesa-item {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	width: max-content;
+}
+
+.mesa-item > * {
+	cursor: pointer;
+}
+
+.mesa-item input:checked ~ label p {
+	color: var(--first-color);
+}
+
+.mesa-item > label {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+}
+
+.mesa-item > label p {
+	transition: all 300ms ease;
+}
+
+.mesa-item:hover > label p {
+	color: var(--first-color);
+}
+
+.mesas-form button {
+	width: 100px;
+	height: 32px;
+	background: var(--first-color);
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	transition: all 300ms ease;
+}
+
+.mesas-form button:hover {
+	opacity: .7;
+}

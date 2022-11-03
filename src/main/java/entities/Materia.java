@@ -6,6 +6,7 @@ public class Materia {
 	private String descripcion;
 	private int anio;
 	private int idCarrera;
+	private int plan;
 	
 	public int getIdMateria() {
 		return idMateria;
@@ -45,5 +46,13 @@ public class Materia {
 	
 	public void setIdCarrera(int idCarrera) {
 		this.idCarrera = idCarrera;
+	}
+	
+	public int getPlan() {
+		return plan;
+	}
+	
+	public void setPlan(int plan) {
+		this.plan = plan;
 	}
 }

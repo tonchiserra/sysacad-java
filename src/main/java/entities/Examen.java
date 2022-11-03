@@ -1,19 +1,19 @@
 package entities;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Examen {
-	private String legajo;
+	private int legajo;
 	private int idMateria;
-	private LocalDate fecha;
+	private LocalDateTime fecha;
 	private String estado;
 	private double nota;
 	
-	public String getLegajo() {
+	public int getLegajo() {
 		return legajo;
 	}
 	
-	public void setLegajo(String legajo) {
+	public void setLegajo(int legajo) {
 		this.legajo = legajo;
 	}
 	
@@ -25,11 +25,11 @@ public class Examen {
 		this.idMateria = idMateria;
 	}
 	
-	public LocalDate getFecha() {
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
 	
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
 	}
 	

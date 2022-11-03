@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		userLoged.setLegajo(legajo);
-		userLoged.setContrasena(password);
+		userLoged.setContrasenia(password);
 		
 		userLoged = ctrlLogin.validate(userLoged);
 		

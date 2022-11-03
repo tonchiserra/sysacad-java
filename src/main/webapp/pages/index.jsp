@@ -14,14 +14,14 @@
 		<link rel="stylesheet" type="text/css" href="../styles/sysacad.css">
 		<link rel="stylesheet" type="text/css" href="../styles/index.css">
 		<script src="../js/index.js" defer></script>
+		<script src="../js/userMenu.js" defer></script>
 		
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 	
 		<!-- Java -->
-
 		<%
 			Usuario user = null;
 		
@@ -50,27 +50,12 @@
 				</button>
 			</div>
 			
-			<aside class="main-menu">
-				<nav>
-					<ul>
-						<li><a href="">Página principal</a></li>
-						<li><a href="">Materias del plan</a></li>
-						<li><a href="">Estado académico</a></li>
-						<li><a href="">Exámenes</a></li>
-						<li><a href="">Cursado</a></li>
-						<li><a href="">Correlatividades</a></li>
-						<li><a href="">Inscripción a exámen</a></li>
-						<li><a href="">Inscripción a cursado</a></li>
-						<li><a href="">Cambio de contraseña</a></li>
-						<li><a href="../LogoutServlet">Salir</a></li>
-					</ul>
-				</nav>
-			</aside>
+			<user-menu></user-menu>
 			<div class="main-menu__background"></div>
 		</header>
 		
 		<main class="main-container">
-			<p class="text-title">¡Hola!</p>
+			<p class="text-title">¡Hola! 👋</p>
 			<h3 class="text-title__username"><%= user.getNombre() %> <%= user.getApellido() %></h3>
 			<p class="text-title"><!-- Tomar carrera de la db --></p>
 			
