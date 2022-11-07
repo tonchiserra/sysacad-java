@@ -134,3 +134,57 @@
 .mesas-form button:hover {
 	opacity: .7;
 }
+
+.inscripcion-modal__container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, .5);
+	z-index: 100;
+}
+
+.inscripcion-modal {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background-color: #fff;
+	border-radius: 10px;
+	height: max-content;
+	width: calc(100vw - 40px);
+	max-width: 600px;
+	z-index: 200;
+	padding: 30px 20px 80px 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.inscripcion-modal button {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	font-size: 16px;
+}
+
+.inscripcion-modal h3 {
+	text-align: center;
+	margin: 0;
+	margin-bottom: 20px;
+}
+
+.inscripcion-modal p {
+	text-align: left;
+}
+
+.inscripcion-modal p:last-of-type {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+}

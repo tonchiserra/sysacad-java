@@ -20,7 +20,7 @@ public class Inscripcion {
 	public Examen validate(Examen unExamen, String unaFecha) {
 		unExamen = dataExamen.getOne(unExamen);
 		
-		if(unExamen.getEstado().equalsIgnoreCase("regular")) {
+		if(unExamen != null && unExamen.getEstado().equalsIgnoreCase("regular")) {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 			String[] fecha = unaFecha.split("T");
  			unaFecha = fecha[0] + " " + fecha[1];
@@ -33,5 +33,13 @@ public class Inscripcion {
 		}
 		
 		return unExamen;
+	}
+	
+	public String getInscripcionKey(Examen unExamen) {
+		String inscripcionKey;
+		
+		inscripcionKey = "Materia-"+Integer.toString(unExamen.getIdMateria())+"-Fecha-"+unExamen.getFecha();
+		
+		return inscripcionKey;
 	}
 }
