@@ -4,10 +4,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import entities.Carrera;
 import entities.Examen;
 
+
 public class DataExamen {
+	
 	
 	public Examen getOne(Examen unExamen) {
 		Examen newExamen = null;
@@ -16,7 +17,7 @@ public class DataExamen {
 		
 		try {
 			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
-					"select legajo, idMateria, estado from examen where legajo=? and idMateria=?"
+					"select * from examen where legajo=? and idMateria=?"
 					);
 			stmt.setInt(1, unExamen.getLegajo());
 			stmt.setInt(2, unExamen.getIdMateria());
@@ -26,6 +27,7 @@ public class DataExamen {
 				newExamen = new Examen();
 				
 				newExamen.setLegajo(rs.getInt("legajo"));
+				newExamen.setNota(rs.getInt("nota"));
 				newExamen.setIdMateria(rs.getInt("idMateria"));
 				newExamen.setEstado(rs.getString("estado"));
 			}
