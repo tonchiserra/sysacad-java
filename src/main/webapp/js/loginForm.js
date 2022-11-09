@@ -25,8 +25,8 @@ class LoginForm extends HTMLElement {
 		}
 	}
 	
-	PasswordHandler(e) {
-		
+	passwordHandler(e) {
+		console.log(e.target.value)
 	}
 }
 
