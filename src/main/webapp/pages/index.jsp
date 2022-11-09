@@ -1,4 +1,12 @@
+<%@ page import="java.util.LinkedList" %>
+<%@ page import="data.DataExamen" %>
+<%@ page import="data.DataMateria" %>
+<%@ page import="data.DataCarrera" %>
+<%@ page import="entities.Examen" %>
+<%@ page import="entities.Carrera" %>
+<%@ page import="entities.Alumno" %>
 <%@ page import="entities.Usuario" %>
+<%@ page import="entities.Materia" %>
 
 <%@ page 
 	language="java" 
@@ -55,40 +63,75 @@
 		</header>
 		
 		<main class="main-container">
-			<p class="text-title">¡Hola! 👋</p>
-			<h3 class="text-title__username"><%= user.getNombre() %> <%= user.getApellido() %></h3>
-			<p class="text-title"><!-- Tomar carrera de la db --></p>
-			
-			<div class="academic-status__container">
-				<div class="academic-status__legends">
-					<div class="legend">
-						<div class="legend__point white"></div>
-						<p class="legend__text">Sin cursar</p>
-					</div>
-					<div class="legend">
-						<div class="legend__point yellow"></div>
-						<p class="legend__text">Regular</p>
-					</div>
-					<div class="legend">
-						<div class="legend__point green"></div>
-						<p class="legend__text">Aprobada</p>
-					</div>
+			<%
+				DataCarrera dCarrera=new DataCarrera();
+				Carrera tCarrera=new Carrera();
+				tCarrera.setIdCarrera(((Alumno) user).getIdCarrera());
+				tCarrera=dCarrera.getOne(tCarrera);
+			%>
+			<div class="margen"></div>
+			<div class="header-container">
+				<div class="saludo">
+					<p> ¡Hola! 👋 </p>
 				</div>
-				<div class="academic-status__table">
-					<div class="academic-status__table-header">
-						<p class="table-header__title">Año</p>
-						<p class="table-header__title">Materia</p>
-						<p class="table-header__title">Nota</p>
-					</div>
-					<!-- por cada materia -->
-						<div class="academic-status__table-row"> <!-- cambiar el color de la fila segun el estado -->
-							<p class="table-row__age-text"><!-- Tomar año de materia de la db --></p>
-							<p class="table-row__name-text"><!-- Tomar nombre de materia de la db --></p>
-							<p class="table-row__note-text"><!-- Tomar nota de materia de la db --></p>
-						</div>
-					<!-- fin for -->
+				<div class="header-materia">
+					<h1><%= user.getNombre() %> <%= user.getApellido() %></h1>
+					<p><%= tCarrera.getDescripcion()%></p>
 				</div>
 			</div>
+			<div class="academic-status">
+				<div class="green-dot"></div>
+				<p style="display:inline-block">Aprobada</p>
+				<div class="yellow-dot"></div>
+				<p style="display:inline-block">Regular</p>
+				<div class="white-dot"></div>
+				<p style="display:inline-block">Sin cursar</p>
+			</div>
+
+			<table class="content-table">
+			    <thead>
+			        <tr>
+			            <th>Año</th>
+		 				<th>Materia</th>
+					  	<th>Nota</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	 <% DataMateria lm=new DataMateria();
+					 	LinkedList<Materia> listaMaterias= new LinkedList<>();
+					 	listaMaterias = lm.getAll();
+					 %>
+		 			 <%for (Materia mat : listaMaterias){ %>
+		  				<%  DataExamen dExamen=new DataExamen();
+		 			 		Examen tExamen=new Examen();
+		 			 		tExamen.setLegajo(user.getLegajo());
+		 			 		tExamen.setIdMateria(mat.getIdMateria());
+		 			 		tExamen=dExamen.getOne(tExamen);
+		 			 		if(tExamen==null){
+		 			 			tExamen=new Examen();
+		 			 			tExamen.setEstado("");
+		 			 		}
+					 	%>
+			        	<%if(tExamen.getEstado().equals("Aprobado")){%>
+			        	<tr class=usuario-aprobado>
+			        	<%}else if(tExamen.getEstado().equals("Regular")) {%>
+			        	<tr class=usuario-regular>
+			        	<%}else{%>
+			        	<tr>
+			        	 <% };%>
+							<td style="text-align: center"><%=mat.getAnio()%></td>
+		 					<td><%=mat.getNombre()%></td>
+		 					
+			 				<%if(tExamen.getEstado().equals("Aprobado")){%>
+		        			<td style="text-align: center"><%=tExamen.getNota()%></td>
+		       			 	<%}else{%>
+		       			 	<td></td>
+		       			 	
+		        			<%};%> 
+			        	</tr>
+		 	         <% }%>
+	    </tbody>
+	</table>
 		</main>
 		
 		<footer class="main-footer">
