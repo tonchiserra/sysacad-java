@@ -25,6 +25,7 @@ public class InscripcionServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		String fecha = request.getParameter("Mesa");
 		Inscripcion ctrlInscripcion = new Inscripcion();
 		int legajo = Integer.parseInt(request.getParameter("Legajo"));
@@ -39,6 +40,14 @@ public class InscripcionServlet extends HttpServlet {
 		alumnoMateria.setLegajo(legajo);
 		alumnoMateria.setIdMateria(idMateria);
 		alumnoMateria = ctrlInscripcion.validate(alumnoMateria, fecha);
+		
+		if(alumnoMateria != null) {
+			session.setAttribute("inscripcion", ctrlInscripcion.getInscripcionKey(alumnoMateria));
+		}
+		
+		if(alumnoMateria == null || alumnoMateria.getEstado().equalsIgnoreCase("cursando")) {
+			session.setAttribute("inscripcion", "Error-noRegular");
+		}
 		
 		response.sendRedirect("pages/inscripcionExamen.jsp");
 	}

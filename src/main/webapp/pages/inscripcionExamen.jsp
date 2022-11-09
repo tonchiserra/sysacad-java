@@ -26,9 +26,15 @@
 		<!-- Java -->
 		<%
 			Usuario user = null;
+			String inscripcionKey = null;
 		
 			if(session.getAttribute("usuario") != null){
 				user = (Usuario) session.getAttribute("usuario");
+			
+				if(session.getAttribute("inscripcion") != null){
+					inscripcionKey = (String) session.getAttribute("inscripcion");
+					session.setAttribute("inscripcion", null);
+				}
 			}else{
 				response.sendRedirect("./login.jsp");
 			}
@@ -98,6 +104,28 @@
 												<p>Llamado número <%=mesa.getLlamado()%></p>
 											</label>
 										</div>
+										<%if(inscripcionKey != null && inscripcionKey.equals("Materia-"+Integer.toString(materia.getIdMateria())+"-Fecha-"+mesa.getFechaHora())) { %>
+											<div class="inscripcion-modal__container">
+												<div class="inscripcion-modal">
+													<button onclick="closeInscripcionModal()">x</button>
+													<h3>¡Felicitaciones, <%=user.getNombre() %>! Te has inscripto a un nuevo exámen:</h3>
+													<p>Fecha: <%=mesa.getFechaHora() %></p>
+													<p>Materia: <%=materia.getNombre() %></p>
+													<p>Año materia: <%=materia.getAnio() %> año</p>
+													<p>Pronto tu profesor se comunicará con usted para brindarle más detalles.</p>
+												</div>
+											</div>
+										<% }%>
+										<%if(inscripcionKey != null && inscripcionKey.equals("Error-noRegular")) { %>
+											<div class="inscripcion-modal__container">
+												<div class="inscripcion-modal">
+													<button onclick="closeInscripcionModal()">x</button>
+													<h3>Oops... No has podido inscribirte en este exámen:</h3>
+													<p>No has podido inscribirte en el exámen de la materia <%=materia.getNombre() %> debido a que aún no te encuentras regular en la misma.</p>
+													<p>Si consideras que esto es un error, por favor comunícate con alumnado.</p>
+												</div>
+											</div>
+										<% }%>
 									<% }%>	
 								<% }%>
 								<%if(user != null) {%>
