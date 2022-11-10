@@ -20,16 +20,18 @@ public class Inscripcion {
 	public Examen validate(Examen unExamen, String unaFecha) {
 		unExamen = dataExamen.getOne(unExamen);
 		
-		if(unExamen != null && unExamen.getEstado().equalsIgnoreCase("regular")) {
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-			String[] fecha = unaFecha.split("T");
- 			unaFecha = fecha[0] + " " + fecha[1];
-			LocalDateTime dateTime = LocalDateTime.parse(unaFecha, formatter);
-			
-			unExamen.setFecha(dateTime);
-			unExamen.setEstado("a rendir");
-			unExamen.setNota(0);
-			unExamen = dataExamen.update(unExamen);
+		if(unExamen != null) {
+			if(unExamen.getEstado().equalsIgnoreCase("regular")) {
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+				String[] fecha = unaFecha.split("T");
+	 			unaFecha = fecha[0] + " " + fecha[1];
+				LocalDateTime dateTime = LocalDateTime.parse(unaFecha, formatter);
+				
+				unExamen.setFecha(dateTime);
+				unExamen.setEstado("a rendir");
+				unExamen.setNota(0);
+				unExamen = dataExamen.update(unExamen);
+			}
 		}
 		
 		return unExamen;
@@ -41,5 +43,9 @@ public class Inscripcion {
 		inscripcionKey = "Materia-"+Integer.toString(unExamen.getIdMateria())+"-Fecha-"+unExamen.getFecha();
 		
 		return inscripcionKey;
+	}
+	
+	public String getErrorMessage(Examen unExamen) {
+		return "Error-noRegular-Materia-"+Integer.toString(unExamen.getIdMateria());
 	}
 }

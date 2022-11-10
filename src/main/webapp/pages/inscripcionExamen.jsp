@@ -107,7 +107,7 @@
 										<%if(inscripcionKey != null && inscripcionKey.equals("Materia-"+Integer.toString(materia.getIdMateria())+"-Fecha-"+mesa.getFechaHora())) { %>
 											<div class="inscripcion-modal__container">
 												<div class="inscripcion-modal">
-													<button onclick="closeInscripcionModal()">x</button>
+													<button type="button" onclick="closeInscripcionModal()">x</button>
 													<h3>¡Felicitaciones, <%=user.getNombre() %>! Te has inscripto a un nuevo exámen:</h3>
 													<p>Fecha: <%=mesa.getFechaHora() %></p>
 													<p>Materia: <%=materia.getNombre() %></p>
@@ -116,17 +116,17 @@
 												</div>
 											</div>
 										<% }%>
-										<%if(inscripcionKey != null && inscripcionKey.equals("Error-noRegular")) { %>
-											<div class="inscripcion-modal__container">
-												<div class="inscripcion-modal">
-													<button onclick="closeInscripcionModal()">x</button>
-													<h3>Oops... No has podido inscribirte en este exámen:</h3>
-													<p>No has podido inscribirte en el exámen de la materia <%=materia.getNombre() %> debido a que aún no te encuentras regular en la misma.</p>
-													<p>Si consideras que esto es un error, por favor comunícate con alumnado.</p>
-												</div>
-											</div>
-										<% }%>
 									<% }%>	
+								<% }%>
+								<%if(inscripcionKey != null && inscripcionKey.equals("Error-noRegular-Materia-"+Integer.toString(materia.getIdMateria()))) { %>
+									<div class="inscripcion-modal__container">
+										<div class="inscripcion-modal">
+											<button type="button" onclick="closeInscripcionModal()">x</button>
+											<h3>Oops... No has podido inscribirte en este exámen:</h3>
+											<p>No has podido inscribirte en el exámen de la materia <%=materia.getNombre() %> debido a que aún no te encuentras regular en la misma.</p>
+											<p>Si consideras que esto es un error, por favor comunícate con alumnado.</p>
+										</div>
+									</div>
 								<% }%>
 								<%if(user != null) {%>
 									<input type="hidden" name="Legajo" value="<%=user.getLegajo()%>">

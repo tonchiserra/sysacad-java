@@ -6,5 +6,5 @@ function handleMenu() {
 function closeInscripcionModal() {
 	let modal = document.querySelector(".inscripcion-modal__container")
 	if(!modal) return
-	document.removeChild(modal)
+	modal.parentElement.removeChild(modal)
 }

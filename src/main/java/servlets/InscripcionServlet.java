@@ -31,6 +31,10 @@ public class InscripcionServlet extends HttpServlet {
 		int legajo = Integer.parseInt(request.getParameter("Legajo"));
 		int idMateria = Integer.parseInt(request.getParameter("Materia"));
 		
+		if(fecha == null) {
+			response.sendRedirect("pages/inscripcionExamen.jsp");
+			return;
+		}
 		//DataUsuario du = new DataUsuario();
 		//Usuario userLoged = new Usuario();
 		//userLoged.setLegajo(legajo);
@@ -42,11 +46,16 @@ public class InscripcionServlet extends HttpServlet {
 		alumnoMateria = ctrlInscripcion.validate(alumnoMateria, fecha);
 		
 		if(alumnoMateria != null) {
-			session.setAttribute("inscripcion", ctrlInscripcion.getInscripcionKey(alumnoMateria));
+			if(alumnoMateria.getEstado().equalsIgnoreCase("a rendir")) {
+				session.setAttribute("inscripcion", ctrlInscripcion.getInscripcionKey(alumnoMateria));
+			}
+			if(alumnoMateria.getEstado().equalsIgnoreCase("cursando")) {
+				session.setAttribute("inscripcion", ctrlInscripcion.getErrorMessage(alumnoMateria));
+			}
 		}
 		
-		if(alumnoMateria == null || alumnoMateria.getEstado().equalsIgnoreCase("cursando")) {
-			session.setAttribute("inscripcion", "Error-noRegular");
+		if(alumnoMateria == null) {
+			session.setAttribute("inscripcion", ctrlInscripcion.getErrorMessage(alumnoMateria));
 		}
 		
 		response.sendRedirect("pages/inscripcionExamen.jsp");
