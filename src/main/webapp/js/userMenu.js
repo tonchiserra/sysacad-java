@@ -9,7 +9,7 @@ class UserMenu extends HTMLElement {
 		this.innerHTML = `
 			<nav>
 				<ul>
-					<li><a href="">Página principal</a></li>
+					<li><a href="./index.jsp">Página principal</a></li>
 					<li><a href="">Materias del plan</a></li>
 					<li><a href="./ListaMaterias.jsp">Estado académico</a></li>
 					<li><a href="">Exámenes</a></li>

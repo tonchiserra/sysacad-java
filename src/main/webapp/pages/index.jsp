@@ -114,7 +114,7 @@
 					 	%>
 			        	<%if(tExamen.getEstado().equals("Aprobado")){%>
 			        	<tr class=usuario-aprobado>
-			        	<%}else if(tExamen.getEstado().equals("Regular")) {%>
+			        	<%}else if((tExamen.getEstado().equals("Regular")) || (tExamen.getEstado().equals("a rendir"))){%>
 			        	<tr class=usuario-regular>
 			        	<%}else{%>
 			        	<tr>
