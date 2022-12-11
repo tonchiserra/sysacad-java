@@ -13,7 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>ABMC Carrera</title>
 		<link rel="stylesheet" type="text/css" href="../styles/sysacad.css">
-		<link rel="stylesheet" type="text/css" href="../styles/index.css">
+		<link rel="stylesheet" type="text/css" href="../styles/abmc.css">
 		<script src="../js/index.js" defer></script>
 		<script src="../js/userMenu.js" defer></script>
 		<script src="../js/adminMenu.js" defer></script>
@@ -40,24 +40,47 @@
 
 	</head>
 <body>
-	<div class="abmc-container">
+	<header class="main-header">
+		<div class="main-header-container">
+			<div class="header__title-container">
+				<img src="../assets/utn-logo.svg" alt="UTN-logo" />
+				<div class="header__title-text">
+					<h2>UTN FRRo</h2>
+					<p>Sistema de autogestión alumnos</p>
+				</div>
+			</div>
+			<button type="button" class="button__menu-mobile" onclick="handleMenu()" >
+				<img class="icon-hamburger" src="../assets/icon-hamburger.svg" />
+				<img class="icon-close" src="../assets/icon-close.svg" />
+			</button>
+		</div>
+		
+		<% if(user.getNombre().equals("admin") && user.getApellido().equals("admin")) { %>
+			<admin-menu></admin-menu>
+		<%}else { %>
+			<user-menu></user-menu>
+		<%} %>
+		<div class="main-menu__background"></div>
+	</header>
+	
+	<main class="main-container abmc-container">
 		<h2>ABMC Carrera</h2>
 		<div class="select-abmc">
 			<form class="select-abmc-form">
-				<label for="alta-radio">Alta</label>
 				<input type="radio" id="alta-radio" name="abmc-radio" data-form="AltaForm" />
-				<label for="baja-radio">Baja</label>
+				<label for="alta-radio">Alta</label>
 				<input type="radio" id="baja-radio" name="abmc-radio" data-form="BajaForm" />
-				<label for="modificacion-radio">Modificacion</label>
+				<label for="baja-radio">Baja</label>
 				<input type="radio" id="modificacion-radio" name="abmc-radio" data-form="ModificacionForm" />
-				<label for="consulta-radio">Consulta</label>
+				<label for="modificacion-radio">Modificacion</label>
 				<input type="radio" id="consulta-radio" name="abmc-radio" data-form="ConsultaForm" />
+				<label for="consulta-radio">Consulta</label>
 			</form>
 		</div>
 		
 		<div id="AltaForm" class="abmc-form-container">
-			<form action="#" class="alta-form">
-				<label>Alta de carrera:</label>
+			<form action="../AltaCarreraServlet" class="abmc-form">
+				<h3>Alta de carrera:</h3>
 				<input type="text" name="nombre" placeholder="Ingrese nombre de la carrera" required />
 				<input type="text" name="descripcion" placeholder="Ingrese descripcion de la carrera" />
 				<button type="submit">Aceptar</button>
@@ -65,23 +88,23 @@
 		</div>
 		
 		<div id="BajaForm" class="abmc-form-container">
-			<form action="#" class="baja-form">
-				<label>Baja de carrera</label>
+			<form action="#" class="abmc-form">
+				<h3>Baja de carrera</h3>
 				<input type="text" name="id" placeholder="Ingrese id de la carrera" required />
 			</form>
 		</div>
 		
 		<div id="ModificacionForm" class="abmc-form-container">
-			<form action="#" class="modificacion-form">
-				<label>Modificacion de carrera</label>
+			<form action="#" class="abmc-form">
+				<h3>Modificacion de carrera</h3>
 			</form>
 		</div>
 		
 		<div id="ConsultaForm" class="abmc-form-container">
-			<form action="#" class="consulta-form">
-				<label>Consulta de carrera</label>
+			<form action="#" class="abmc-form">
+				<h3>Consulta de carrera</h3>
 			</form>
 		</div>
-	</div>
+	</main>
 </body>
 </html>

@@ -39,4 +39,24 @@
     <servlet-name>InscripcionServlet</servlet-name>
     <url-pattern>/InscripcionServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ABMCCarreraServlet</display-name>
+    <servlet-name>ABMCCarreraServlet</servlet-name>
+    <servlet-class>servlets.ABMCCarreraServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ABMCCarreraServlet</servlet-name>
+    <url-pattern>/ABMCCarreraServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AltaCarreraServlet</display-name>
+    <servlet-name>AltaCarreraServlet</servlet-name>
+    <servlet-class>servlets.AltaCarreraServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AltaCarreraServlet</servlet-name>
+    <url-pattern>/AltaCarreraServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

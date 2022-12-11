@@ -17,6 +17,7 @@
 		<link rel="stylesheet" type="text/css" href="../styles/inscripcion.css">
 		<script src="../js/index.js" defer></script>
 		<script src="../js/userMenu.js" defer></script>
+		<script src="../js/adminMenu.js" defer></script>
 		
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,7 +58,11 @@
 				</button>
 			</div>
 			
-			<user-menu></user-menu>
+			<% if(user.getNombre().equals("admin") && user.getApellido().equals("admin")) { %>
+				<admin-menu></admin-menu>
+			<%}else { %>
+				<user-menu></user-menu>
+			<%} %>
 			<div class="main-menu__background"></div>
 		</header>
 		
