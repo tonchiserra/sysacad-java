@@ -81,3 +81,35 @@
 .abmc-form button:hover {
 	opacity: .7;
 }
+
+.abmc-modal__container {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background: #fff;
+	width: 400px;
+	height: 200px;
+	border-radius: 10px;
+}
+
+.abmc-modal {
+	position: relative;
+	padding: 20px;
+}
+
+.abmc-modal button {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: var(--first-color);
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+}

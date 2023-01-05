@@ -8,3 +8,10 @@ function closeInscripcionModal() {
 	if(!modal) return
 	modal.parentElement.removeChild(modal)
 }
+
+
+function closeABMCModal() {
+	let modal = document.querySelector(".abmc-modal__container")
+	if(!modal) return
+	modal.parentElement.removeChild(modal)
+}

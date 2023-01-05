@@ -27,11 +27,17 @@
 		<!-- Java -->
 		<%
 			Usuario user = null;
+			Carrera newCarrera = null;
 		
 			if(session.getAttribute("usuario") != null){
 				user = (Usuario) session.getAttribute("usuario");
 				if(!user.getNombre().equals("admin") && !user.getApellido().equals("admin")) {
 					response.sendRedirect("./index.jsp");
+				}
+				
+				if(session.getAttribute("abmc") != null) {
+					newCarrera = (Carrera) session.getAttribute("abmc");
+					session.setAttribute("abmc", null);
 				}
 			}else{
 				response.sendRedirect("./index.jsp");
@@ -91,6 +97,7 @@
 			<form action="#" class="abmc-form">
 				<h3>Baja de carrera</h3>
 				<input type="text" name="id" placeholder="Ingrese id de la carrera" required />
+				<button type="submit">Aceptar</button>
 			</form>
 		</div>
 		
@@ -105,6 +112,21 @@
 				<h3>Consulta de carrera</h3>
 			</form>
 		</div>
+		
+		<!-- Estilos para la ventana modal -->
+		<!-- JS para cerrar la ventana modal (copiar de la modal de inscripcion a exámen) -->
+		<!-- Hacer lo mismo que en alta para baja, modificacion y consulta -->
+		
+		<%if(newCarrera != null) { %>
+			<div class="abmc-modal__container">
+				<div class="abmc-modal">
+					<button type="button" onclick="closeABMCModal()">x</button>
+					<p>ID: <%=newCarrera.getIdCarrera() %></p>
+					<p>Nombre: <%=newCarrera.getNombre() %></p>
+					<p>Descripción: <%=newCarrera.getDescripcion() %></p>
+				</div>
+			</div>
+		<% }%>
 	</main>
 </body>
 </html>
