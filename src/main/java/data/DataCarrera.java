@@ -116,6 +116,24 @@ public class DataCarrera {
 		
 		try {
 			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
+					"select idCarrera, nombre, descripcion from carrera where idCarrera=?"
+					);
+			stmt.setInt(1, unaCarrera.getIdCarrera());
+			rs = stmt.executeQuery();
+			
+			if(rs != null && rs.next()) {
+				unaCarrera = new Carrera();
+				
+				unaCarrera.setIdCarrera(rs.getInt("idCarrera"));
+				unaCarrera.setNombre(rs.getString("nombre"));
+				unaCarrera.setDescripcion(rs.getString("descripcion"));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		try {
+			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
 					"delete from carrera where idCarrera=?"
 					);
 			stmt.setInt(1, unaCarrera.getIdCarrera());
@@ -123,6 +141,8 @@ public class DataCarrera {
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
+			unaCarrera.setNombre(null);
+			unaCarrera.setDescripcion(null);
 		} finally {
 			try {
 				if(rs!=null) {rs.close();}

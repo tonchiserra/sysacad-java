@@ -35,10 +35,6 @@ public class InscripcionServlet extends HttpServlet {
 			response.sendRedirect("pages/inscripcionExamen.jsp");
 			return;
 		}
-		//DataUsuario du = new DataUsuario();
-		//Usuario userLoged = new Usuario();
-		//userLoged.setLegajo(legajo);
-		//userLoged = du.getOne(userLoged);
 		
 		Examen alumnoMateria = new Examen();
 		alumnoMateria.setLegajo(legajo);

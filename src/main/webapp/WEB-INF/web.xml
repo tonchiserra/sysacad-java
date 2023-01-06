@@ -39,4 +39,54 @@
     <servlet-name>InscripcionServlet</servlet-name>
     <url-pattern>/InscripcionServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ABMCCarreraServlet</display-name>
+    <servlet-name>ABMCCarreraServlet</servlet-name>
+    <servlet-class>servlets.ABMCCarreraServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ABMCCarreraServlet</servlet-name>
+    <url-pattern>/ABMCCarreraServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AltaCarreraServlet</display-name>
+    <servlet-name>AltaCarreraServlet</servlet-name>
+    <servlet-class>servlets.AltaCarreraServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AltaCarreraServlet</servlet-name>
+    <url-pattern>/AltaCarreraServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BajaCarreraServlet</display-name>
+    <servlet-name>BajaCarreraServlet</servlet-name>
+    <servlet-class>servlets.BajaCarreraServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BajaCarreraServlet</servlet-name>
+    <url-pattern>/BajaCarreraServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificacionCarreraServlet</display-name>
+    <servlet-name>ModificacionCarreraServlet</servlet-name>
+    <servlet-class>servlets.ModificacionCarreraServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificacionCarreraServlet</servlet-name>
+    <url-pattern>/ModificacionCarreraServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConsultaCarreraServlet</display-name>
+    <servlet-name>ConsultaCarreraServlet</servlet-name>
+    <servlet-class>servlets.ConsultaCarreraServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultaCarreraServlet</servlet-name>
+    <url-pattern>/ConsultaCarreraServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
