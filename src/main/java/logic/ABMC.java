@@ -15,4 +15,22 @@ public class ABMC {
 		
 		return nuevaCarrera;
 	}
+	
+	public Carrera baja(Carrera unaCarrera) {
+		unaCarrera = dataCarrera.delete(unaCarrera);
+		
+		return unaCarrera;
+	}
+	
+	public Carrera modificacion(Carrera unaCarrera) {
+		unaCarrera = dataCarrera.update(unaCarrera);
+		
+		return unaCarrera;
+	}
+	
+	public Carrera consulta(Carrera unaCarrera) {
+		unaCarrera = dataCarrera.getOne(unaCarrera);
+		
+		return unaCarrera;
+	}
 }

@@ -11,10 +11,10 @@ import java.io.IOException;
 import entities.Carrera;
 import logic.ABMC;
 
-public class AltaCarreraServlet extends HttpServlet {
+public class ModificacionCarreraServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public AltaCarreraServlet() {
+    public ModificacionCarreraServlet() {
         super();
     }
 
@@ -22,21 +22,23 @@ public class AltaCarreraServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		ABMC ctrlABMC = new ABMC();
 		
+		String id = request.getParameter("id");
 		String nombre = request.getParameter("nombre");
 		String descripcion = request.getParameter("descripcion");
 		
-		if(nombre == null) {
+		if(id == null) {
 			response.sendRedirect("pages/abmc-carrera.jsp");
 			return;
 		}
 		
-		Carrera nuevaCarrera = new Carrera();
-		nuevaCarrera.setNombre(nombre);
-		nuevaCarrera.setDescripcion(descripcion);
-		nuevaCarrera = ctrlABMC.alta(nuevaCarrera);
+		Carrera unaCarrera = new Carrera();
+		unaCarrera.setIdCarrera(Integer.parseInt(id));
+		unaCarrera.setNombre(nombre);
+		unaCarrera.setDescripcion(descripcion);
+		unaCarrera = ctrlABMC.modificacion(unaCarrera);
 		
-		if(nuevaCarrera != null) {
-			session.setAttribute("abmc", nuevaCarrera);
+		if(unaCarrera != null) {
+			session.setAttribute("abmc", unaCarrera);
 		}
 		
 		response.sendRedirect("pages/abmc-carrera.jsp");

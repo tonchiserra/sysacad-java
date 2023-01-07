@@ -94,7 +94,7 @@
 		</div>
 		
 		<div id="BajaForm" class="abmc-form-container">
-			<form action="#" class="abmc-form">
+			<form action="../BajaCarreraServlet" class="abmc-form">
 				<h3>Baja de carrera</h3>
 				<input type="text" name="id" placeholder="Ingrese id de la carrera" required />
 				<button type="submit">Aceptar</button>
@@ -102,20 +102,23 @@
 		</div>
 		
 		<div id="ModificacionForm" class="abmc-form-container">
-			<form action="#" class="abmc-form">
+			<form action="../ModificacionCarreraServlet" class="abmc-form">
 				<h3>Modificacion de carrera</h3>
+				<input type="text" name="id" placeholder="Ingrese id de la carrera" requiered />
+				<input type="text" name="nombre" placeholder="Ingrese nombre de la carrera" required />
+				<input type="text" name="descripcion" placeholder="Ingrese descripcion de la carrera" />
+				<button type="submit">Aceptar</button>
 			</form>
+
 		</div>
 		
 		<div id="ConsultaForm" class="abmc-form-container">
-			<form action="#" class="abmc-form">
+			<form action="../ConsultaCarreraServlet" class="abmc-form">
 				<h3>Consulta de carrera</h3>
+				<input type="text" name="id" placeholder="Ingrese id de la carrera" required />
+				<button type="submit">Aceptar</button>
 			</form>
 		</div>
-		
-		<!-- Estilos para la ventana modal -->
-		<!-- JS para cerrar la ventana modal (copiar de la modal de inscripcion a exámen) -->
-		<!-- Hacer lo mismo que en alta para baja, modificacion y consulta -->
 		
 		<%if(newCarrera != null) { %>
 			<div class="abmc-modal__container">
