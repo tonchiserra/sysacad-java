@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 import entities.Comision;
-import logic.ABMC;
+import logic.ABMCComision;
 
 public class ConsultaComisionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -20,7 +20,7 @@ public class ConsultaComisionServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		ABMC ctrlABMC = new ABMC();
+		ABMCComision ctrlABMC = new ABMCComision();
 		
 		String codigo = request.getParameter("codigo");
 		

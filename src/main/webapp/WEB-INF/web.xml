@@ -89,4 +89,44 @@
     <servlet-name>ConsultaCarreraServlet</servlet-name>
     <url-pattern>/ConsultaCarreraServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AltaComisionServlet</display-name>
+    <servlet-name>AltaComisionServlet</servlet-name>
+    <servlet-class>servlets.AltaComisionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AltaComisionServlet</servlet-name>
+    <url-pattern>/AltaComisionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BajaComisionServlet</display-name>
+    <servlet-name>BajaComisionServlet</servlet-name>
+    <servlet-class>servlets.BajaComisionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BajaComisionServlet</servlet-name>
+    <url-pattern>/BajaComisionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConsultaComisionServlet</display-name>
+    <servlet-name>ConsultaComisionServlet</servlet-name>
+    <servlet-class>servlets.ConsultaComisionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultaComisionServlet</servlet-name>
+    <url-pattern>/ConsultaComisionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificacionComisionServlet</display-name>
+    <servlet-name>ModificacionComisionServlet</servlet-name>
+    <servlet-class>servlets.ModificacionComisionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificacionComisionServlet</servlet-name>
+    <url-pattern>/ModificacionComisionServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

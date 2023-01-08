@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 import entities.Carrera;
-import logic.ABMC;
+import logic.ABMCCarrera;
 
 public class ConsultaCarreraServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -20,7 +20,7 @@ public class ConsultaCarreraServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		ABMC ctrlABMC = new ABMC();
+		ABMCCarrera ctrlABMC = new ABMCCarrera();
 		
 		String id = request.getParameter("id");
 		

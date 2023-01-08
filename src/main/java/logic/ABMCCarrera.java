@@ -3,10 +3,10 @@ package logic;
 import data.DataCarrera;
 import entities.Carrera;
 
-public class ABMC {
+public class ABMCCarrera {
 	private DataCarrera dataCarrera;
 	
-	public ABMC() {
+	public ABMCCarrera() {
 		dataCarrera = new DataCarrera();
 	}
 	

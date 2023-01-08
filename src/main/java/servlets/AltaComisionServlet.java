@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 import entities.Comision;
-import logic.ABMC;
+import logic.ABMCComision;
 
 public class AltaComisionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -20,7 +20,7 @@ public class AltaComisionServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		ABMC ctrlABMC = new ABMC();
+		ABMCComision ctrlABMC = new ABMCComision();
 		
 		String codigo = request.getParameter("codigo");
 		String cupoTotal = request.getParameter("cupo");
@@ -31,8 +31,8 @@ public class AltaComisionServlet extends HttpServlet {
 		}
 		
 		Comision nuevaComision = new Comision();
-		nuevaComision.setNombre(nombre);
-		nuevaComision.setDescripcion(descripcion);
+		nuevaComision.setCodigoComision(codigo);
+		nuevaComision.setCupoTotal(Integer.parseInt(cupoTotal));
 		nuevaComision = ctrlABMC.alta(nuevaComision);
 		
 		if(nuevaComision != null) {
