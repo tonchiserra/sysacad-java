@@ -129,4 +129,44 @@
     <servlet-name>ModificacionComisionServlet</servlet-name>
     <url-pattern>/ModificacionComisionServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AltaMateriaServlet</display-name>
+    <servlet-name>AltaMateriaServlet</servlet-name>
+    <servlet-class>servlets.AltaMateriaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AltaMateriaServlet</servlet-name>
+    <url-pattern>/AltaMateriaServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BajaMateriaServlet</display-name>
+    <servlet-name>BajaMateriaServlet</servlet-name>
+    <servlet-class>servlets.BajaMateriaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BajaMateriaServlet</servlet-name>
+    <url-pattern>/BajaMateriaServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConsultaMateriaServlet</display-name>
+    <servlet-name>ConsultaMateriaServlet</servlet-name>
+    <servlet-class>servlets.ConsultaMateriaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultaMateriaServlet</servlet-name>
+    <url-pattern>/ConsultaMateriaServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificacionMateriaServlet</display-name>
+    <servlet-name>ModificacionMateriaServlet</servlet-name>
+    <servlet-class>servlets.ModificacionMateriaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificacionMateriaServlet</servlet-name>
+    <url-pattern>/ModificacionMateriaServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
