@@ -7,7 +7,7 @@ import java.util.LinkedList;
 
 public class DataComision {
 	
-	public void create(Comision cComision) {
+	public Comision create(Comision cComision) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -19,6 +19,12 @@ public class DataComision {
 			pstmt.setString(1, cComision.getCodigoComision());
 			pstmt.setInt(2, cComision.getCupoTotal());
 			pstmt.executeUpdate();
+			
+			rs = pstmt.getGeneratedKeys();
+			
+			while(rs != null && rs.next()) {
+				cComision.setCodigoComision(rs.getString(1));
+			}
 		} 
 		catch(SQLException er) {er.printStackTrace();}
 		finally 
@@ -31,19 +37,41 @@ public class DataComision {
 			} catch (SQLException e) {e.printStackTrace();}
 		}
 		
+		return cComision;
+		
 	}
 	
-	public void delete(Comision dComision) {
+	public Comision delete(Comision dComision) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		
 		try 
 		{
+			pstmt= DBConnector.getInstancia().getConnection().prepareStatement(
+					"select * from comision where codigoComision=?");
+			pstmt.setString(1, dComision.getCodigoComision());
+			rs= pstmt.executeQuery();
+			
+			
+			if(rs!=null && rs.next()) 
+			{
+				dComision.setCodigoComision(rs.getString("codigoComision"));
+				dComision.setCupoTotal(rs.getInt("cupoTotal"));
+			}
+			
+		} catch(SQLException er) {er.printStackTrace();}
+		
+		
+		try 
+		{
 			pstmt= DBConnector.getInstancia().getConnection().prepareStatement("delete from comision where codigoComision=?");
 			pstmt.setString(1, dComision.getCodigoComision());
-			pstmt.executeUpdate();
 		} 
-		catch(SQLException er) {er.printStackTrace();}
+		catch(SQLException er) { 
+			er.printStackTrace();
+			dComision.setCodigoComision(null);
+			dComision.setCupoTotal(0);
+		}
 		finally 
 		{
 			try 
@@ -54,11 +82,13 @@ public class DataComision {
 			} catch (SQLException e) {e.printStackTrace();}
 		}
 		
+		return dComision;
 	}
 		
 	
-	public void update(Comision uComision) {
+	public Comision update(Comision uComision) {
 		PreparedStatement pstmt=null;
+		ResultSet rs = null;
 		
 		try 
 		{
@@ -77,6 +107,8 @@ public class DataComision {
 				DBConnector.getInstancia().releaseConnection();
 			} catch (SQLException e) {e.printStackTrace();}
 		}
+		
+		return uComision;
 	}
 	
 	

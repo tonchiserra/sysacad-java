@@ -8,38 +8,36 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-import entities.Carrera;
-import logic.ABMCCarrera;
+import entities.Comision;
+import logic.ABMCComision;
 
-public class AltaCarreraServlet extends HttpServlet {
+public class ConsultaComisionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public AltaCarreraServlet() {
+    public ConsultaComisionServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		ABMCCarrera ctrlABMC = new ABMCCarrera();
+		ABMCComision ctrlABMC = new ABMCComision();
 		
-		String nombre = request.getParameter("nombre");
-		String descripcion = request.getParameter("descripcion");
+		String codigo = request.getParameter("codigo");
 		
-		if(nombre == null) {
-			response.sendRedirect("pages/abmc-carrera.jsp");
+		if(codigo == null) {
+			response.sendRedirect("pages/abmc-comision.jsp");
 			return;
 		}
 		
-		Carrera nuevaCarrera = new Carrera();
-		nuevaCarrera.setNombre(nombre);
-		nuevaCarrera.setDescripcion(descripcion);
-		nuevaCarrera = ctrlABMC.alta(nuevaCarrera);
+		Comision unaComision = new Comision();
+		unaComision.setCodigoComision(codigo);
+		unaComision = ctrlABMC.consulta(unaComision);
 		
-		if(nuevaCarrera != null) {
-			session.setAttribute("abmc", nuevaCarrera);
+		if(unaComision != null) {
+			session.setAttribute("abmc", unaComision);
 		}
 		
-		response.sendRedirect("pages/abmc-carrera.jsp");
+		response.sendRedirect("pages/abmc-comision.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

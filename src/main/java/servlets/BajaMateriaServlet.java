@@ -8,38 +8,36 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-import entities.Carrera;
-import logic.ABMCCarrera;
+import entities.Materia;
+import logic.ABMCMateria;
 
-public class AltaCarreraServlet extends HttpServlet {
+public class BajaMateriaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public AltaCarreraServlet() {
+    public BajaMateriaServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		ABMCCarrera ctrlABMC = new ABMCCarrera();
+		ABMCMateria ctrlABMC = new ABMCMateria();
 		
-		String nombre = request.getParameter("nombre");
-		String descripcion = request.getParameter("descripcion");
+		String idMateria = request.getParameter("id");
 		
-		if(nombre == null) {
-			response.sendRedirect("pages/abmc-carrera.jsp");
+		if(idMateria == null) {
+			response.sendRedirect("pages/abmc-materia.jsp");
 			return;
 		}
 		
-		Carrera nuevaCarrera = new Carrera();
-		nuevaCarrera.setNombre(nombre);
-		nuevaCarrera.setDescripcion(descripcion);
-		nuevaCarrera = ctrlABMC.alta(nuevaCarrera);
+		Materia unaMateria = new Materia();
+		unaMateria.setIdMateria(Integer.parseInt(idMateria));
+		unaMateria = ctrlABMC.baja(unaMateria);
 		
-		if(nuevaCarrera != null) {
-			session.setAttribute("abmc", nuevaCarrera);
+		if(unaMateria != null) {
+			session.setAttribute("abmc", unaMateria);
 		}
 		
-		response.sendRedirect("pages/abmc-carrera.jsp");
+		response.sendRedirect("pages/abmc-materia.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 import entities.Carrera;
+import entities.Comision;
 import entities.Materia;
 
 public class DataMateria {
@@ -138,5 +139,40 @@ public class DataMateria {
 		}
 
 		return unaMateria;
+	}
+	
+	public Materia getOne(Materia unaMateria) {
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = DBConnector.getInstancia().getConnection().prepareStatement(
+					"select idMateria, nombre, descripcion, anio, idCarrera, plan from materia where idMateria = ?");
+			pstmt.setInt(1, unaMateria.getIdMateria());
+			rs = pstmt.executeQuery();
+			
+			if(rs!=null && rs.next()) {
+				unaMateria.setIdMateria(rs.getInt("idMateria"));
+				unaMateria.setNombre(rs.getString("nombre"));
+				unaMateria.setDescripcion(rs.getString("descripcion"));
+				unaMateria.setAnio(rs.getInt("anio"));
+				unaMateria.setIdCarrera(rs.getInt("idCarrera"));
+				unaMateria.setPlan(rs.getInt("plan"));
+			}
+			
+		} catch(SQLException er) {
+			er.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)   {rs.close();}
+				if(pstmt!=null) {pstmt.close();}
+				DBConnector.getInstancia().releaseConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return unaMateria; 
+		
 	}
 }
