@@ -40,12 +40,12 @@ public class AltaUsuarioServlet extends HttpServlet {
 		
 		Usuario nuevoUsuario;
 		
-		if(idCarrera.length() > 0) {
-			nuevoUsuario = new Alumno();
-			((Alumno) nuevoUsuario).setIdCarrera(Integer.parseInt(idCarrera));
-		}else {
+		if(Integer.parseInt(sueldo) > 0) {
 			nuevoUsuario = new Profesor();
 			((Profesor) nuevoUsuario).setSueldo(Double.parseDouble(sueldo));
+		}else {
+			nuevoUsuario = new Alumno();
+			((Alumno) nuevoUsuario).setIdCarrera(Integer.parseInt(idCarrera));
 		}
 		
 		nuevoUsuario.setLegajo(Integer.parseInt(legajo));
