@@ -40,6 +40,8 @@ public class ModificacionMateriaServlet extends HttpServlet {
 		unaMateria.setIdCarrera(Integer.parseInt(idCarrera));
 		unaMateria.setPlan(Integer.parseInt(plan));
 		
+		unaMateria = ctrlABMC.modificacion(unaMateria);
+		
 		if(unaMateria != null) {
 			session.setAttribute("abmc", unaMateria);
 		}

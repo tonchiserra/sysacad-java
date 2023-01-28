@@ -169,4 +169,44 @@
     <servlet-name>ModificacionMateriaServlet</servlet-name>
     <url-pattern>/ModificacionMateriaServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AltaUsuarioServlet</display-name>
+    <servlet-name>AltaUsuarioServlet</servlet-name>
+    <servlet-class>servlets.AltaUsuarioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AltaUsuarioServlet</servlet-name>
+    <url-pattern>/AltaUsuarioServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BajaUsuarioServlet</display-name>
+    <servlet-name>BajaUsuarioServlet</servlet-name>
+    <servlet-class>servlets.BajaUsuarioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BajaUsuarioServlet</servlet-name>
+    <url-pattern>/BajaUsuarioServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConsultaUsuarioServlet</display-name>
+    <servlet-name>ConsultaUsuarioServlet</servlet-name>
+    <servlet-class>servlets.ConsultaUsuarioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultaUsuarioServlet</servlet-name>
+    <url-pattern>/ConsultaUsuarioServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificacionUsuarioServlet</display-name>
+    <servlet-name>ModificacionUsuarioServlet</servlet-name>
+    <servlet-class>servlets.ModificacionUsuarioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificacionUsuarioServlet</servlet-name>
+    <url-pattern>/ModificacionUsuarioServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
