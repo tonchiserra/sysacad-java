@@ -6,6 +6,49 @@ import java.sql.*;
 
 public class DataUsuario {
 	
+	public Usuario create(Usuario newUsuario) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
+					"insert into usuario (legajo, contrasenia, nombre, apellido, dni, email, idCarrera, sueldo) values (?, ?, ?, ?, ? ,?, ?)",
+					PreparedStatement.RETURN_GENERATED_KEYS
+					);
+			stmt.setInt(1, newUsuario.getLegajo());
+			stmt.setString(2, newUsuario.getContrasenia());
+			stmt.setString(3, newUsuario.getNombre());
+			stmt.setString(4, newUsuario.getApellido());
+			stmt.setString(5, newUsuario.getDNI());
+			stmt.setString(6, newUsuario.getEmail());
+			
+			//Preguntar si es alumno o profesor y ejecutar la query correspondiente	
+			stmt.setInt(7, newUsuario.getIdCarrera());
+			stmt.setDouble(8, newUsuario.getSueldo());
+			
+			stmt.executeUpdate();
+			
+			rs = stmt.getGeneratedKeys();
+			
+			while(rs != null && rs.next()) {						
+				newUsuario.setLegajo(rs.getInt(1));
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DBConnector.getInstancia().releaseConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return newUsuario;
+	}
+	
 	public Usuario getByUser(Usuario user) {
 		
 		Usuario newUser = null;
@@ -92,5 +135,86 @@ public class DataUsuario {
 		}
 		
 		return newUser;
+	}
+	
+	public Usuario delete(Usuario unUsuario) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
+					"select legajo, nombre, apellido, dni, email from usuario where legajo=?"
+					);
+			stmt.setInt(1, unUsuario.getLegajo());
+			stmt.setString(2, unUsuario.getNombre());
+			stmt.setString(3, unUsuario.getApellido());
+			stmt.setString(4, unUsuario.getDNI());
+			stmt.setString(5, unUsuario.getEmail());
+			rs = stmt.executeQuery();
+			
+			if(rs != null && rs.next()) {
+				unUsuario = new Usuario();
+				
+				unUsuario.setLegajo(rs.getInt("legajo"));
+				unUsuario.setNombre(rs.getString("nombre"));
+				unUsuario.setApellido(rs.getString("apellido"));
+				unUsuario.setDNI(rs.getString("dni"));
+				unUsuario.setEmail(rs.getString("email"));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		try {
+			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
+					"delete from usuario where legajo=?"
+					);
+			stmt.setInt(1, unUsuario.getLegajo());
+			stmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+			unUsuario.setNombre(null);
+			unUsuario.setApellido(null);
+		} finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DBConnector.getInstancia().releaseConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return unUsuario;
+	}
+	
+	public Usuario update(Usuario unUsuario) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
+					"update usuario set nombre = ?, apellido = ?, email = ? where legajo = ?"
+					);
+			stmt.setString(1, unUsuario.getNombre());
+			stmt.setString(2, unUsuario.getApellido());
+			stmt.setString(3, unUsuario.getEmail());
+			stmt.setInt(4, unUsuario.getLegajo());
+			stmt.executeUpdate();
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) { rs.close(); }
+				if(stmt != null) { stmt.close(); }
+				DBConnector.getInstancia().releaseConnection();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return unUsuario;
 	}
 }
