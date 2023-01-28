@@ -12,7 +12,7 @@ public class DataUsuario {
 		
 		try {
 			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
-					"insert into usuario (legajo, contrasenia, nombre, apellido, dni, email, idCarrera, sueldo) values (?, ?, ?, ?, ? ,?, ?)",
+					"insert into usuario (legajo, contrasenia, nombre, apellido, dni, email, idCarrera, sueldo) values (?, ?, ?, ?, ? ,?, ?, ?)",
 					PreparedStatement.RETURN_GENERATED_KEYS
 					);
 			stmt.setInt(1, newUsuario.getLegajo());
@@ -21,10 +21,16 @@ public class DataUsuario {
 			stmt.setString(4, newUsuario.getApellido());
 			stmt.setString(5, newUsuario.getDNI());
 			stmt.setString(6, newUsuario.getEmail());
-			
-			//Preguntar si es alumno o profesor y ejecutar la query correspondiente	
-			stmt.setInt(7, newUsuario.getIdCarrera());
-			stmt.setDouble(8, newUsuario.getSueldo());
+		
+			if(newUsuario.getClass() == Profesor.class) {
+				stmt.setObject(7, null);
+				double sueldo = ((Profesor) newUsuario).getSueldo();
+				stmt.setDouble(8, sueldo);
+			} else {
+				int idCarrera = ((Alumno) newUsuario).getIdCarrera();
+				stmt.setInt(7, idCarrera);
+				stmt.setObject(8, null);
+			}
 			
 			stmt.executeUpdate();
 			
@@ -195,12 +201,23 @@ public class DataUsuario {
 		
 		try {
 			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
-					"update usuario set nombre = ?, apellido = ?, email = ? where legajo = ?"
+					"update usuario set nombre = ?, apellido = ?, email = ?, idCarrera = ?, sueldo = ? where legajo = ?"
 					);
 			stmt.setString(1, unUsuario.getNombre());
 			stmt.setString(2, unUsuario.getApellido());
 			stmt.setString(3, unUsuario.getEmail());
-			stmt.setInt(4, unUsuario.getLegajo());
+			
+			if(unUsuario.getClass() == Profesor.class) {
+				stmt.setObject(4, null);
+				double sueldo = ((Profesor) unUsuario).getSueldo();
+				stmt.setDouble(5, sueldo);
+			} else {
+				int idCarrera = ((Alumno) unUsuario).getIdCarrera();
+				stmt.setInt(4, idCarrera);
+				stmt.setObject(5, null);
+			}
+			
+			stmt.setInt(6, unUsuario.getLegajo());
 			stmt.executeUpdate();
 
 		} catch(SQLException e) {

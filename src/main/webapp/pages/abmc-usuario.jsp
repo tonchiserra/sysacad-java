@@ -1,5 +1,7 @@
 <%@ page import="entities.Carrera" %>
 <%@ page import="entities.Usuario" %>
+<%@ page import="entities.Alumno" %>
+<%@ page import="entities.Profesor" %>
 
 <%@ page 
 	language="java" 
@@ -138,10 +140,10 @@
 					<p>Apellido: <%=newUsuario.getApellido() %></p>
 					<p>Dni: <%=newUsuario.getDNI() %></p>
 					<p>Email: <%=newUsuario.getEmail() %></p>
-					<%if(newUsuario.GetType() == typeof(Alumno)) { %>
-						<p>idCarrera: <%=newUsuario.getIdCarrera() %></p>
-					<%}else{ %>
-						<p>Sueldo: <%=newUsuario.getSueldo() %></p>
+					<%if(newUsuario.getClass() == Profesor.class ) { %>
+						<p>Sueldo: <%=((Profesor) newUsuario).getSueldo() %></p>
+					<%}else if(newUsuario.getClass() == Alumno.class ){ %>
+						<p>idCarrera: <%=((Alumno) newUsuario).getIdCarrera() %></p>
 					<%} %>
 				</div>
 			</div>

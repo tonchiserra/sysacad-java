@@ -199,7 +199,7 @@ CREATE TABLE `usuario` (
   `dni` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `sueldo` double unsigned DEFAULT NULL,
-  `idCarrera` int unsigned NOT NULL,
+  `idCarrera` int unsigned DEFAULT NULL,
   PRIMARY KEY (`legajo`),
   UNIQUE KEY `legajo_UNIQUE` (`legajo`),
   KEY `FK_idCarrera_idx` (`idCarrera`),
