@@ -14,6 +14,7 @@ class AdminMenu extends HTMLElement {
 					<li><a href="./abmc-comision.jsp">ABMC Comisión</a></li>
 					<li><a href="./abmc-materia.jsp">ABMC Materia</a></li>
 					<li><a href="./abmc-usuario.jsp">ABMC Usuario</a></li>
+					<li><a href="./abmc-mesa.jsp">ABMC Mesa</a></li>
 					<li><a href="../LogoutServlet">Salir</a></li>
 				</ul>
 			</nav>

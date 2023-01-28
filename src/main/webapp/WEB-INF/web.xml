@@ -209,4 +209,44 @@
     <servlet-name>ModificacionUsuarioServlet</servlet-name>
     <url-pattern>/ModificacionUsuarioServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AltaMesaServlet</display-name>
+    <servlet-name>AltaMesaServlet</servlet-name>
+    <servlet-class>servlets.AltaMesaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AltaMesaServlet</servlet-name>
+    <url-pattern>/AltaMesaServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BajaMesaServlet</display-name>
+    <servlet-name>BajaMesaServlet</servlet-name>
+    <servlet-class>servlets.BajaMesaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BajaMesaServlet</servlet-name>
+    <url-pattern>/BajaMesaServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConsultaMesaServlet</display-name>
+    <servlet-name>ConsultaMesaServlet</servlet-name>
+    <servlet-class>servlets.ConsultaMesaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultaMesaServlet</servlet-name>
+    <url-pattern>/ConsultaMesaServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificacionMesaServlet</display-name>
+    <servlet-name>ModificacionMesaServlet</servlet-name>
+    <servlet-class>servlets.ModificacionMesaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificacionMesaServlet</servlet-name>
+    <url-pattern>/ModificacionMesaServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

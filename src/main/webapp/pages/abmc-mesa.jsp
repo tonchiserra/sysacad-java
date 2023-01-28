@@ -1,4 +1,4 @@
-<%@ page import="entities.Materia" %>
+<%@ page import="entities.Mesa" %>
 <%@ page import="entities.Usuario" %>
 
 <%@ page 
@@ -11,7 +11,7 @@
 <head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>ABMC Materia</title>
+		<title>ABMC Mesa</title>
 		<link rel="stylesheet" type="text/css" href="../styles/sysacad.css">
 		<link rel="stylesheet" type="text/css" href="../styles/abmc.css">
 		<script src="../js/index.js" defer></script>
@@ -27,7 +27,7 @@
 		<!-- Java -->
 		<%
 			Usuario user = null;
-			Materia newMateria = null;
+			Mesa newMesa = null;
 		
 			if(session.getAttribute("usuario") != null){
 				user = (Usuario) session.getAttribute("usuario");
@@ -36,7 +36,7 @@
 				}
 				
 				if(session.getAttribute("abmc") != null) {
-					newMateria = (Materia) session.getAttribute("abmc");
+					newMesa = (Mesa) session.getAttribute("abmc");
 					session.setAttribute("abmc", null);
 				}
 			}else{
@@ -70,7 +70,7 @@
 	</header>
 	
 	<main class="main-container abmc-container">
-		<h2>ABMC Materia</h2>
+		<h2>ABMC Mesa</h2>
 		<div class="select-abmc">
 			<form class="select-abmc-form">
 				<input type="radio" id="alta-radio" name="abmc-radio" data-form="AltaForm" />
@@ -85,55 +85,52 @@
 		</div>
 		
 		<div id="AltaForm" class="abmc-form-container">
-			<form action="../AltaMateriaServlet" class="abmc-form">
-				<h3>Alta de materia:</h3>
-				<input type="text" name="nombre" placeholder="Ingrese nombre de la materia" required />
-				<input type="text" name="descripcion" placeholder="Ingrese descripcion de la materia" />
-				<input type="number" name="anio" placeholder="Ingrese a qué año pertenece la materia" required />
-				<input type="number" name="idCarrera" placeholder="Ingrese id de carrera a la que pertenece" required />
-				<input type="number" name="plan" placeholder="Ingrese plan de la materia" required />
+			<form action="../AltaMesaServlet" class="abmc-form">
+				<h3>Alta de mesa:</h3>
+				<input type="text" name="llamado" placeholder="Ingrese llamado" required />
+				<input type="text" name="idMateria" placeholder="Ingrese id de materia" required />
+				<input type="number" name="fechaHora" placeholder="Ingrese fecha y hora []" required />
 				<button type="submit">Aceptar</button>
 			</form>
 		</div>
 		
 		<div id="BajaForm" class="abmc-form-container">
-			<form action="../BajaMateriaServlet" class="abmc-form">
-				<h3>Baja de materia</h3>
-				<input type="number" name="id" placeholder="Ingrese id de la materia" required />
+			<form action="../BajaMesaServlet" class="abmc-form">
+				<h3>Baja de mesa:</h3>
+				<input type="text" name="llamado" placeholder="Ingrese llamado" required />
+				<input type="text" name="idMateria" placeholder="Ingrese id de materia" required />
+				<input type="number" name="fechaHora" placeholder="Ingrese fecha y hora []" required />
 				<button type="submit">Aceptar</button>
 			</form>
 		</div>
 		
 		<div id="ModificacionForm" class="abmc-form-container">
-			<form action="../ModificacionMateriaServlet" class="abmc-form">
-				<h3>Modificacion de materia</h3>
-				<input type="text" name="nombre" placeholder="Ingrese nombre de la materia" required />
-				<input type="text" name="descripcion" placeholder="Ingrese descripcion de la materia" />
-				<input type="number" name="anio" placeholder="Ingrese a qué año pertenece la materia" required />
-				<input type="number" name="idCarrera" placeholder="Ingrese id de carrera a la que pertenece" required />
-				<input type="number" name="plan" placeholder="Ingrese plan de la materia" required />
+			<form action="../ModificacionMesaServlet" class="abmc-form">
+				<h3>Modificacion de mesa</h3>
+				<input type="text" name="llamado" placeholder="Ingrese llamado" required />
+				<input type="text" name="idMateria" placeholder="Ingrese id de materia" required />
+				<input type="number" name="fechaHora" placeholder="Ingrese fecha y hora []" required />
 				<button type="submit">Aceptar</button>
 			</form>
 		</div>
 		
 		<div id="ConsultaForm" class="abmc-form-container">
-			<form action="../ConsultaMateriaServlet" class="abmc-form">
+			<form action="../ConsultaMesaServlet" class="abmc-form">
 				<h3>Consulta de materia</h3>
-				<input type="number" name="id" placeholder="Ingrese id de la materia" required />
+				<input type="text" name="llamado" placeholder="Ingrese llamado" required />
+				<input type="text" name="idMateria" placeholder="Ingrese id de materia" required />
+				<input type="number" name="fechaHora" placeholder="Ingrese fecha y hora [yyyy-MM-dd HH:mm]" required />
 				<button type="submit">Aceptar</button>
 			</form>
 		</div>
 		
-		<%if(newMateria != null) { %>
+		<%if(newMesa != null) { %>
 			<div class="abmc-modal__container">
 				<div class="abmc-modal">
 					<button type="button" onclick="closeABMCModal()">x</button>
-					<p>Id: <%=newMateria.getIdMateria() %></p>
-					<p>Nombre: <%=newMateria.getNombre() %></p>
-					<p>Descripción: <%=newMateria.getDescripcion() %></p>
-					<p>Año: <%=newMateria.getAnio() %></p>
-					<p>IdCarrera: <%=newMateria.getIdCarrera() %></p>
-					<p>Plan: <%=newMateria.getPlan() %></p>
+					<p>Llamado: <%=newMesa.getLlamado() %></p>
+					<p>idMateria: <%=newMesa.getIdMateria() %></p>
+					<p>Fecha y hora: <%=newMesa.getFechaHora() %></p>
 				</div>
 			</div>
 		<% }%>
