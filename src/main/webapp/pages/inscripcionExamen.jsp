@@ -58,7 +58,7 @@
 				</button>
 			</div>
 			
-			<% if(user.getNombre().equals("admin") && user.getApellido().equals("admin")) { %>
+			<% if(user.getIsAdmin()) { %>
 				<admin-menu></admin-menu>
 			<%}else { %>
 				<user-menu></user-menu>

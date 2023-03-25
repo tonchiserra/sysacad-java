@@ -32,6 +32,7 @@ public class AltaUsuarioServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String idCarrera = request.getParameter("idCarrera");
 		String sueldo = request.getParameter("sueldo");
+		String isAdmin = request.getParameter("isAdmin");
 		
 		if(legajo == null) {
 			response.sendRedirect("pages/abmc-usuario.jsp");
@@ -54,6 +55,7 @@ public class AltaUsuarioServlet extends HttpServlet {
 		nuevoUsuario.setContrasenia(contrasenia);
 		nuevoUsuario.setDNI(dni);
 		nuevoUsuario.setEmail(email);
+		nuevoUsuario.setIsAdmin(Boolean.parseBoolean(isAdmin));
 		
 		nuevoUsuario = ctrlABMC.alta(nuevoUsuario);
 		

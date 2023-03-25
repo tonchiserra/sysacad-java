@@ -7,6 +7,7 @@ public class Usuario {
 	private String apellido;
 	private String dni;
 	private String email;
+	private boolean isAdmin;
 	
 	public int getLegajo() {
 		return legajo;
@@ -54,6 +55,14 @@ public class Usuario {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public boolean getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 }
 

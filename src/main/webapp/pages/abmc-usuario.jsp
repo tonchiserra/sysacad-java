@@ -33,7 +33,7 @@
 		
 			if(session.getAttribute("usuario") != null){
 				user = (Usuario) session.getAttribute("usuario");
-				if(!user.getNombre().equals("admin") && !user.getApellido().equals("admin")) {
+				if(!user.getIsAdmin()) {
 					response.sendRedirect("./index.jsp");
 				}
 				
@@ -63,7 +63,7 @@
 			</button>
 		</div>
 		
-		<% if(user.getNombre().equals("admin") && user.getApellido().equals("admin")) { %>
+		<% if(user.getIsAdmin()) { %>
 			<admin-menu></admin-menu>
 		<%}else { %>
 			<user-menu></user-menu>
@@ -96,7 +96,8 @@
 				<input type="text" name="dni" placeholder="Ingrese dni del usuario" required />
 				<input type="text" name="email" placeholder="Ingrese email del usuario" required />
 				<input type="text" name="idCarrera" placeholder="Ingrese id de la carrera a la que pertenece" />
-				<input type="text" name="sueldo" placeholder="Ingrese sueldo en caso de ser profesor" />
+				<input type="text" name="sueldo" placeholder="Ingrese sueldo en caso de ser profesor" required />
+				<div><input type="checkbox" name="isAdmin" id="isAdminUsuario" /><label for="isAdminUsuario">Es Admin</label></div>
 				<button type="submit">Aceptar</button>
 			</form>
 		</div>
@@ -145,6 +146,7 @@
 					<%}else if(newUsuario.getClass() == Alumno.class ){ %>
 						<p>idCarrera: <%=((Alumno) newUsuario).getIdCarrera() %></p>
 					<%} %>
+					<p>Es Admin: <%newUsuario.getIsAdmin(); %></p>
 				</div>
 			</div>
 		<% }%>

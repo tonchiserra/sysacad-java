@@ -12,7 +12,7 @@ public class DataUsuario {
 		
 		try {
 			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
-					"insert into usuario (legajo, contrasenia, nombre, apellido, dni, email, idCarrera, sueldo) values (?, ?, ?, ?, ? ,?, ?, ?)",
+					"insert into usuario (legajo, contrasenia, nombre, apellido, dni, email, idCarrera, sueldo, isAdmin) values (?, ?, ?, ?, ? ,?, ?, ?, ?)",
 					PreparedStatement.RETURN_GENERATED_KEYS
 					);
 			stmt.setInt(1, newUsuario.getLegajo());
@@ -21,6 +21,7 @@ public class DataUsuario {
 			stmt.setString(4, newUsuario.getApellido());
 			stmt.setString(5, newUsuario.getDNI());
 			stmt.setString(6, newUsuario.getEmail());
+			stmt.setBoolean(9, newUsuario.getIsAdmin());
 		
 			if(newUsuario.getClass() == Profesor.class) {
 				stmt.setObject(7, null);
@@ -62,7 +63,7 @@ public class DataUsuario {
 		ResultSet rs = null;
 		try {
 			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
-					"select legajo,nombre,apellido,dni,email,sueldo,idCarrera from usuario where legajo=? and contrasenia=?"
+					"select legajo,nombre,apellido,dni,email,sueldo,idCarrera,isAdmin from usuario where legajo=? and contrasenia=?"
 					);
 			stmt.setInt(1, user.getLegajo());
 			stmt.setString(2, user.getContrasenia());
@@ -83,6 +84,7 @@ public class DataUsuario {
 				newUser.setApellido(rs.getString("apellido"));
 				newUser.setDNI(rs.getString("dni"));
 				newUser.setEmail(rs.getString("email"));
+				newUser.setIsAdmin(rs.getBoolean("isAdmin"));
 				
 			}
 		} catch (SQLException e) {
@@ -107,7 +109,7 @@ public class DataUsuario {
 		
 		try {
 			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
-					"select legajo,nombre,apellido,dni,email,sueldo,idCarrera from usuario where legajo=?"
+					"select legajo,nombre,apellido,dni,email,sueldo,idCarrera,isAdmin from usuario where legajo=?"
 					);
 			stmt.setInt(1, user.getLegajo());
 			rs = stmt.executeQuery();
@@ -127,6 +129,7 @@ public class DataUsuario {
 				newUser.setApellido(rs.getString("apellido"));
 				newUser.setDNI(rs.getString("dni"));
 				newUser.setEmail(rs.getString("email"));
+				newUser.setIsAdmin(rs.getBoolean("isAdmin"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
