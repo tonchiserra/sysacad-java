@@ -59,7 +59,7 @@
 				</button>
 			</div>
 			
-			<% if(user.getNombre().equals("admin") && user.getApellido().equals("admin")) { %>
+			<% if(user.getIsAdmin()) { %>
 				<admin-menu></admin-menu>
 			<%}else { %>
 				<user-menu></user-menu>
@@ -68,77 +68,91 @@
 			<div class="main-menu__background"></div>
 		</header>
 		
-		<main class="main-container">
-			<%
-				DataCarrera dCarrera=new DataCarrera();
-				Carrera tCarrera=new Carrera();
-				tCarrera.setIdCarrera(((Alumno) user).getIdCarrera());
-				tCarrera=dCarrera.getOne(tCarrera);
-			%>
-			<div class="margen"></div>
-			<div class="header-container">
-				<div class="saludo">
-					<p> ¡Hola! 👋 </p>
+		<%if(user.getIsAdmin()) { %>
+			<main class="main-container">
+				<div class="margen"></div>
+				<div class="header-container">
+					<div class="saludo">
+						<p> ¡Hola! 👋 </p>
+					</div>
+					<div class="header-materia">
+						<h1><%= user.getNombre() %> <%= user.getApellido() %></h1>
+					</div>
 				</div>
-				<div class="header-materia">
-					<h1><%= user.getNombre() %> <%= user.getApellido() %></h1>
-					<p><%= tCarrera.getDescripcion()%></p>
+			</main>
+		<%}else { %>
+			<main class="main-container">
+				<%
+					DataCarrera dCarrera=new DataCarrera();
+					Carrera tCarrera=new Carrera();
+					tCarrera.setIdCarrera(((Alumno) user).getIdCarrera());
+					tCarrera=dCarrera.getOne(tCarrera);
+				%>
+				<div class="margen"></div>
+				<div class="header-container">
+					<div class="saludo">
+						<p> ¡Hola! 👋 </p>
+					</div>
+					<div class="header-materia">
+						<h1><%= user.getNombre() %> <%= user.getApellido() %></h1>
+						<p><%= tCarrera.getDescripcion()%></p>
+					</div>
 				</div>
-			</div>
-			<div class="academic-status">
-				<div class="green-dot"></div>
-				<p style="display:inline-block">Aprobada</p>
-				<div class="yellow-dot"></div>
-				<p style="display:inline-block">Regular</p>
-				<div class="white-dot"></div>
-				<p style="display:inline-block">Sin cursar</p>
-			</div>
-
-			<table class="content-table">
-			    <thead>
-			        <tr>
-			            <th>Año</th>
-		 				<th>Materia</th>
-					  	<th>Nota</th>
-			        </tr>
-			    </thead>
-			    <tbody>
-			    	 <% DataMateria lm=new DataMateria();
-					 	LinkedList<Materia> listaMaterias= new LinkedList<>();
-					 	listaMaterias = lm.getAll();
-					 %>
-		 			 <%for (Materia mat : listaMaterias){ %>
-		  				<%  DataExamen dExamen=new DataExamen();
-		 			 		Examen tExamen=new Examen();
-		 			 		tExamen.setLegajo(user.getLegajo());
-		 			 		tExamen.setIdMateria(mat.getIdMateria());
-		 			 		tExamen=dExamen.getOne(tExamen);
-		 			 		if(tExamen==null){
-		 			 			tExamen=new Examen();
-		 			 			tExamen.setEstado("");
-		 			 		}
-					 	%>
-			        	<%if(tExamen.getEstado().equals("Aprobado")){%>
-			        	<tr class=usuario-aprobado>
-			        	<%}else if((tExamen.getEstado().equals("Regular")) || (tExamen.getEstado().equals("a rendir"))){%>
-			        	<tr class=usuario-regular>
-			        	<%}else{%>
-			        	<tr>
-			        	 <% };%>
-							<td style="text-align: center"><%=mat.getAnio()%></td>
-		 					<td><%=mat.getNombre()%></td>
-		 					
-			 				<%if(tExamen.getEstado().equals("Aprobado")){%>
-		        			<td style="text-align: center"><%=tExamen.getNota()%></td>
-		       			 	<%}else{%>
-		       			 	<td></td>
-		       			 	
-		        			<%};%> 
-			        	</tr>
-		 	         <% }%>
-	    </tbody>
-	</table>
-		</main>
+				<div class="academic-status">
+					<div class="green-dot"></div>
+					<p style="display:inline-block">Aprobada</p>
+					<div class="yellow-dot"></div>
+					<p style="display:inline-block">Regular</p>
+					<div class="white-dot"></div>
+					<p style="display:inline-block">Sin cursar</p>
+				</div>
+	
+				<table class="content-table">
+				    <thead>
+				        <tr>
+				            <th>Año</th>
+			 				<th>Materia</th>
+						  	<th>Nota</th>
+				        </tr>
+				    </thead>
+				    <tbody>
+				    	 <% DataMateria lm=new DataMateria();
+						 	LinkedList<Materia> listaMaterias= new LinkedList<>();
+						 	listaMaterias = lm.getAll();
+						 %>
+			 			 <%for (Materia mat : listaMaterias){ %>
+			  				<%  DataExamen dExamen=new DataExamen();
+			 			 		Examen tExamen=new Examen();
+			 			 		tExamen.setLegajo(user.getLegajo());
+			 			 		tExamen.setIdMateria(mat.getIdMateria());
+			 			 		tExamen=dExamen.getOne(tExamen);
+			 			 		if(tExamen==null){
+			 			 			tExamen=new Examen();
+			 			 			tExamen.setEstado("");
+			 			 		}
+						 	%>
+				        	<%if(tExamen.getEstado().equals("Aprobado")){%>
+				        	<tr class=usuario-aprobado>
+				        	<%}else if((tExamen.getEstado().equals("Regular")) || (tExamen.getEstado().equals("a rendir"))){%>
+				        	<tr class=usuario-regular>
+				        	<%}else{%>
+				        	<tr>
+				        	 <% };%>
+								<td style="text-align: center"><%=mat.getAnio()%></td>
+			 					<td><%=mat.getNombre()%></td>
+			 					
+				 				<%if(tExamen.getEstado().equals("Aprobado")){%>
+			        			<td style="text-align: center"><%=tExamen.getNota()%></td>
+			       			 	<%}else{%>
+			       			 	<td></td>
+			       			 	
+			        			<%};%> 
+				        	</tr>
+			 	         <% }%>
+				    </tbody>
+				</table>
+			</main>
+		<%} %>
 		
 		<footer class="main-footer">
 		
