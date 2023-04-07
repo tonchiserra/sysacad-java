@@ -249,4 +249,14 @@
     <servlet-name>ModificacionMesaServlet</servlet-name>
     <url-pattern>/ModificacionMesaServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExamenServlet</display-name>
+    <servlet-name>ExamenServlet</servlet-name>
+    <servlet-class>servlets.ExamenServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExamenServlet</servlet-name>
+    <url-pattern>/ExamenServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

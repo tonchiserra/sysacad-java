@@ -3,6 +3,7 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 import entities.Examen;
 
@@ -44,6 +45,45 @@ public class DataExamen {
 		}
 		
 		return newExamen;
+	}
+	
+	public LinkedList<Examen> getByLegajo(Examen unExamen) {
+		LinkedList<Examen> losExamenes = new LinkedList<>();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			stmt = DBConnector.getInstancia().getConnection().prepareStatement(
+					"select * from examen where legajo=?"
+					);
+			stmt.setInt(1, unExamen.getLegajo());
+			rs = stmt.executeQuery();
+			
+			if(rs != null) {
+				while(rs.next()) {
+					Examen newExamen = new Examen();
+					
+					newExamen.setLegajo(rs.getInt("legajo"));
+					newExamen.setNota(rs.getInt("nota"));
+					newExamen.setIdMateria(rs.getInt("idMateria"));
+					newExamen.setEstado(rs.getString("estado"));
+					
+					losExamenes.add(newExamen);
+				}
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) { rs.close(); }
+				if(stmt != null) { stmt.close(); }
+				DBConnector.getInstancia().releaseConnection();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return losExamenes;
 	}
 	
 	public Examen update(Examen unExamen) {
